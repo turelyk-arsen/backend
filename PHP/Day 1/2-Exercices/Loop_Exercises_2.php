@@ -1,7 +1,10 @@
 <?php
 	   $array = array("Salad"=>1.03,"Tomato"=>2.3,"Oignon"=>1.85,"Red cabbage"=>0.85);
-       asort($array);
 
+asort($array);
+echo '<pre>';
+var_dump($array);
+echo '</pre>';
 foreach ($array as $x => $y) {
 	echo "Product: ".$x. ", Save: ".$y;
 	echo "<br>";
@@ -11,12 +14,18 @@ echo "<br>";
 echo "<br>";
 
 ksort($array);
+echo '<pre>';
+var_dump($array);
+echo '</pre>';
 
+$sum = 0;
 foreach ($array as $x => $y) {
 	echo "Product: ".$x. ", Save: ".$y;
 	echo "<br>";
+	$sum += $y;
 };
 
+echo "Total: $sum";
 
 
 /*
@@ -41,13 +50,40 @@ foreach ($array as $x => $y) {
 		Do it by using a for loop.
 		Once it's done, try to do it also with the while loop.
 	*/
-
+	$array_fill = [];
+	for ($i=0; $i <=20; $i++) {
+		$array_fill[] = $i;
+		echo "$i <br>";
+	}
+	echo '<pre>';
+    echo var_dump($array_fill);
+    echo '</pre>';
+    
+	$array_another_array = [];
+    $a = 0;
+	while ($a <= 20) {
+		  $array_another_array[] = $a;
+          echo $a++;
+	}
+	echo '<pre>';
+    echo var_dump($array_another_array);
+    echo '</pre>';
 /*
 	-Exercise 3 :
 		Use a loop to create an array.
 		This array will contain the multiplication table of 2.
 		From 1 to 10.
 	*/
+echo "<h3>This array will contain the multiplication table of 2.</h3>";
+echo "<br>";
+$table = [];
+for ($i = 1; $i <= 10; $i++) {
+	$table[$i] = $i * 2;
+	echo "$i * 2 = $table[$i] <br>";
+}
+echo '<pre>';
+echo var_dump($table);
+echo '</pre>';
 
 /*
 	-Exercise 4 :
@@ -63,3 +99,27 @@ foreach ($array as $x => $y) {
 		3. CHALLENGE (optional)
 		You can only use 2 variables ($array and $i doesn't count).
 	*/
+
+	$array = [5, 20, 6, -6, 100];
+	$posMax = 0;
+	$posMin = 0;
+
+	foreach ($array as $key => $value) {
+		if ($value > $array[$posMax])
+		$posMax = $key;
+
+		if($value < $array[$posMin])
+		$posMin = $key;
+	}
+	echo 'Maximum is '.$array[$posMax].', its position is: '. $posMax.'<br>';
+	echo 'Minimum is '.$array[$posMin].', its position is: '. $posMin.'<br>';
+
+
+	// $res = $a[0];
+
+	// for ($i = 0; $i <= count($a); $i++) {
+    //    if($res < $a[$i]) {
+	// 	$res = $a[$i];
+	//    }
+	// }
+	// echo $res;
