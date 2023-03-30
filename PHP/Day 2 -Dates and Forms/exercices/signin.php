@@ -35,6 +35,8 @@
         $email = $_POST['email'];
         $password =$_POST['password'];
         $pass_confirm =$_POST['pass_confirm'];
+        $password_lenght = strlen($password);
+        $password_confirm_lenght = strlen($pass_confirm);
 
         if (empty($firstName)) {
             echo "<p>'Firstname is mandatory </p>";
@@ -47,14 +49,15 @@
         echo "<p>The e-mail must be between 8 and 50 characters</p>";
         }
         
-        if ($password === $pass_confirm) {
+        if ($password === $pass_confirm && $password_lenght >= 8 && $password_confirm_lenght >=8 ) {
             echo "The fields Password and Confirmation must be identical and have at least 8 characters";
         }
-        else {
+
+        
             echo "<p>First name: $firstName";
             echo "<p>Last name: $lastName";
             echo "<p>Email: $email";
-        }
+        
     }
 
 
