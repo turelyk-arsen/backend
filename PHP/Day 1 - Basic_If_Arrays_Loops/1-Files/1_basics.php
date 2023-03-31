@@ -26,6 +26,10 @@ echo '</br>';
 echo "<h1>$firstName</h1>";
 echo '<h1>$firstName</h1>';
 
+echo "<input type=\"text\"><br>";
+echo "<input type='text'><br>";
+
+
 // Display type of the variable
 echo gettype($are_you_doing_well);
 echo '<br>';
@@ -63,5 +67,16 @@ $a--;
 // 3. concatenation: put two or more string together
 echo "<br>";
 echo "Hello $firstName, Welcome to my website <br>";
-echo 'Hello '.$firstName.', Welcome to my website';
+echo 'Hello '.$firstName.', Welcome to my website <br>';
+
+define('MY_AGE', 35);
+echo MY_AGE.'<br>';
+echo M_E.'<br>';
+echo M_PI.'<br>';
+
+echo round(5.554534523, 3).'<br>';
+echo mt_rand(1,10).'<br>';
+echo min(1, 3, 4, 5, 324).'<br>';
+echo max(1, 3, 4, 5, 324).'<br>';
+
 ?>
