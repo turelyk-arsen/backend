@@ -12,9 +12,10 @@
 		integerPart(5.26) // return 5
 		integerPart(10.76) // return 10
 */
-function positiveNumber ($x) {
+function positiveNumber($x)
+{
 	$intX = (int)$x;
-	return $intX.'<br>';
+	return $intX . '<br>';
 }
 echo positiveNumber(12.2341);
 echo positiveNumber(1.999);
@@ -29,13 +30,20 @@ echo '<p style="font-weight: 900"> EXERCISE 1 </p>';
 		- Take one array of integer as argument
 		- Checks if the elements of the arrays are ordered in ascending order.
 */
-$firstArray = [50,10,15,25];
-function checkArray ($firstArray) {
-$sorted = sort($firstArray);
-if ($firstArray == $sorted)
-return 'Your array are ordered in ascending order.';
-else
-return 'Your array are NOT ordered in ascending order.';
+$firstArray = [50, 10, 15, 25];
+function checkArray($firstArray)
+{
+	$sorted = sort($firstArray);
+	$length = count($firstArray);
+	for ($i = 0; $i < $length; $i++) {
+		if ($firstArray == $sorted)
+		return true;
+
+		// 	echo 'Your array are ordered in ascending order.';
+		// else
+		// 	echo 'Your array are NOT ordered in ascending order.';
+	}
+	
 }
 
 echo checkArray($firstArray);
