@@ -149,6 +149,18 @@ function palindrom($string_check)
 palindrom('poop');
 palindrom('poosdfgp');
 
+function isPalindrom($string)
+{
+	$lenght = strlen($string) - 1;
+	for ($i = 0; $i <= $lenght / 2; $i++) {
+		if ($string[$i] != $string[$lenght - $i]) {
+			return false;
+		}
+	}
+	return true;
+}
+echo isPalindrom('madam');
+
 echo '<hr>';
 echo '<p style="font-weight: 900"> EXERCISE 6 </p>';
 
@@ -162,18 +174,33 @@ A prime number is an integer greater than 1 that can only be divided by itself a
 
 function checkNumber($your_number)
 {
-	$result = [];
 	for ($i = 2; $i < $your_number; $i++) {
-		$result[$i] = $your_number % $i;
-	}
-	return $result;
-
-	foreach($result as $value){
-		if ($value > 0)
-		echo 'asdf';
+		if ($your_number % $i == 0) {
+			return 'NOT prime number: ' . $your_number . '<br>';
+		} else {
+			return 'A prime number: ' . $your_number . '<br>';
+		}
+		// My code: when change ECHO to return === work
 	}
 }
-var_dump(checkNumber(2));
+echo checkNumber(5);
+
+function isPrime($myNumber)
+{
+	// First, check if number is greater than 1
+	if ($myNumber <= 1)
+		return "Number should be > 1 <br>";
+
+	//try to divide my every number
+	for ($i = 2; $i < $myNumber; $i++) {
+		//check if a number is divisible by another one, use modulo
+		if ($myNumber % $i == 0)
+			return 'Not a prime number <br>';
+	}
+	// return after loop: don't use else
+	return "It is a prime <br>";
+}
+echo isPrime(5);
 
 echo '<hr>';
 echo '<p style="font-weight: 900"> EXERCISE 7 </p>';
@@ -184,3 +211,19 @@ echo '<p style="font-weight: 900"> EXERCISE 7 </p>';
 	You can use only one other variable (simple, no array).
 	You can only use count() or strlen() function.
 */
+$myArray = [null, false, true, 1000, 'asdfas'];
+$myNewArray = [];
+function reverseArray($myArray)
+{
+	$arrayCount = count($myArray) - 1;
+	for ($i = 0; $i <= $arrayCount; $i++) {
+		$myNewArray[$i] = $myArray[$arrayCount - $i];
+	}
+	echo '<pre>';
+	var_dump($myArray);
+	echo '</pre>';
+	echo '<pre>';
+	var_dump($myNewArray);
+	echo '</pre>';
+}
+reverseArray($myArray);
