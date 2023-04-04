@@ -78,3 +78,33 @@ $contacts = [
 ];
 echo $contacts[0]['phone'];
 
+$numArray = [1, 3, 2];
+sort($numArray);
+print_r($numArray);
+
+$newString = implode(':', $numArray);
+echo $newString;
+
+$secondArray = [1,2,3,4,5];
+print_r(array_slice($secondArray, 2));
+
+$line = '0, 2, 3, 1, 2';
+$line = explode(", ",$line);
+sort($line);
+$res = array_unique($line);
+
+print_r($line);
+print_r(array_unique($line));
+echo implode(" ", $res);
+
+// $nums = explode(' ', $line);
+
+// $numsPrinted = [];
+// foreach ($nums as $num) {
+//     if (!isset($numsPrinted[$num])) {
+//         $numsPrinted[$num] = true;
+//         echo $num . ' ';
+//     }
+// }
+
+

@@ -18,11 +18,15 @@ if ($conn) {
 
     // echo print_r($num);
 
+    $countNum = 0;
+
     foreach ($songs as $key => $song) {
+
         if ($key >= 6 )
         echo "<div>
         <p> New song is : $song[title] and realese date - $song[release_date]
          </p></div>";
+         
     }
 
     mysqli_close($conn);
