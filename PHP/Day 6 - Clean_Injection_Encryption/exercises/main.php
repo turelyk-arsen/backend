@@ -5,5 +5,5 @@ echo "<h1> Hello ". $_SESSION["firstname"]. " you are register!!! </h1>";
 
 ?>
 <form action="register.php">
-    <input type="submit" value="Register page" >
+    <input type="submit" value="Log in" >
 </form>

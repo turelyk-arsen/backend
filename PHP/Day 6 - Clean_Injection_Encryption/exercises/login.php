@@ -43,6 +43,7 @@ if (isset($_POST['submitBtn'])) {
 
                 if ($user['email'] == $email && password_verify($password, $user['users_password'])) {
                     header('Location: main.php');
+                    $_SESSION['firstname'] = $user['firstname'];
                 } else {
                     header('Location: register.php');
                 }
