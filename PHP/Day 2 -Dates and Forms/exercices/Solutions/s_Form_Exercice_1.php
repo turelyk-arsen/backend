@@ -15,8 +15,8 @@
         $email = $_POST['email'];
         if(strpos($email,'@')){
             echo '<span style="color: green"> Valid email</span>';
-        }else {
-            echo '<span style="color: red"> Invalid email</span>'
+        } else {
+            echo '<span style="color: red"> Invalid email</span>';
         }
     }
     

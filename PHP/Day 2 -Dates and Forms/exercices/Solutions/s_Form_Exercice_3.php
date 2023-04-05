@@ -32,12 +32,12 @@
         if (empty($email))
             $errors['email'] = 'Email is mandatory!';
         else if (strlen($email) < 8 or strlen($email) > 50)
-            $errors['email'] = 'Email must be between 8 and 50 characters long.'
+            $errors['email'] = 'Email must be between 8 and 50 characters long.';
 
         if (strlen($password) < 8 )
-            $errors['password'] = 'Password must be at least 8 characters long.'
+            $errors['password'] = 'Password must be at least 8 characters long.';
         else if ($password != $cPassword)
-            $errors['password'] = 'Password must match!'
+            $errors['password'] = 'Password must match!';
 
         //Onli if NO errors
         if(empty($errors)){
@@ -46,7 +46,7 @@
             echo "Email : $email <br>";
 
             if(isset($_POST['newsletter']))
-                echo "Subscibed to the newsletter. <br>"
+                echo "Subscibed to the newsletter. <br>";
         }
     }
     ?>
