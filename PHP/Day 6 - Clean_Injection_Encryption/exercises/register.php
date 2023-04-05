@@ -1,46 +1,56 @@
 <?php
+session_start();
 // <!-- - Step 2 :
 // If the form is submitted, you have to check :
 //     * first name, last name, mail and password must not be empty !
 //     * mail must be a valid one (with @symbol)
 //     * passwords must be the same  -->
-$messageName = $messageNameLast = $messageEmail = $messageEmail2 = $password = $message_password = $message_password_confirm ='';
-$firstName = $lastName = $email = '';
+$messageName = $messageNameLast = $messageEmail = $messageEmail2 = $password = $message_password = $message_password_confirm = '';
+
+$firstName_correct = $lastName_correct = $email = '';
 $errors = [];
 if (isset($_POST['submitBtn'])) {
 
-    if (empty($_POST['firstName'])) {
+    $firstName = trim($_POST['firstName']);
+    if (empty($firstName)) {
         $messageName = 'Firstname is mandatory <br>';
         $errors = $messageName;
     } else {
-        $firstName = $_POST['firstName'];
+        $firstName_correct = strip_tags($firstName);
+        $_SESSION['firstname'] = $firstName_correct;
     }
 
-    if (empty($_POST['lastName'])) {
+    $lastName = trim($_POST['lastName']);
+    if (empty($lastName)) {
         $messageNameLast = 'Lastname is mandatory <br>';
         $errors = $messageNameLast;
     } else {
-        $lastName = $_POST['lastName'];
+        $lastName_correct = strip_tags($lastName);
     }
 
-    if (empty($_POST['email'])) {
+    $email = trim($_POST['email']);
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $valid_email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (empty($email) || strlen($email) < 5) {
         $messageEmail = 'Email is mandatory <br>';
         $errors = $messageEmail;
-    } else if (!strpos($_POST['email'], '@')) {
-        $messageEmail2 = '@ is mandatory <br>';
-        $errors = $messageEmail2;
-    } else {
-        $email = $_POST['email'];
+    } else if (!strpos($email, '@')) {
+        $messageEmail = '@ is mandatory <br>';
+        $errors = $messageEmail;
+    } else if (!$valid_email) {
+        $messageEmail = 'Incorrect email <br>';
+        $errors = $messageEmail;
     }
 
-    if (empty($_POST['password']) && $_POST['password'] < 3) {
+    $password = $_POST['password'];
+    if (empty($password) || strlen($password) < 3) {
         $message_password = 'Password is mandatory <br>';
         $errors = $message_password;
-    } else if ($_POST['password'] !== $_POST['password_confirm']) {
+    } else if ($password !== $_POST['password_confirm']) {
         $message_password_confirm = 'Password is wrong <br>';
         $errors = $message_password_confirm;
     } else {
-        $password = $_POST['password'];
+        $password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     if (empty($errors)) {
@@ -49,27 +59,30 @@ if (isset($_POST['submitBtn'])) {
         if ($conn) {
             // echo "Connected";
 
-            $query = "INSERT INTO users (firstname, lastname, email, users_password) VALUES ('$firstName', '$lastName', '$email', '$password')";
+            $query = "INSERT INTO users (firstname, lastname, email, users_password) VALUES ('$firstName_correct', '$lastName_correct', '$email', '$password')";
             $result = mysqli_query($conn, $query);
-
+            header('Location: main.php');
             mysqli_close($conn);
         }
     }
-//     else {
-//     header('Location: register.php');
-// }
-} 
+    //     else {
+    //     
+    // }
+}
 
 ?>
 
 <div>
+    <h2>Sign up</h2>
+    <a href="login.php">Log IN</a>
+
     <form action="register.php" method="POST">
         <label for="firstName">First name:</label> <br>
-        <input type="text" name="firstName" placeholder="First name" value="<?php echo $firstName; ?>">
+        <input type="text" name="firstName" placeholder="First name" value="<?php echo $firstName_correct; ?>">
         <span><?php echo $messageName; ?></span>
 
         <label for="lastName">Last name:</label> <br>
-        <input type="text" name="lastName" placeholder="Last name" value="<?php echo $lastName; ?>">
+        <input type="text" name="lastName" placeholder="Last name" value="<?php echo $lastName_correct; ?>">
         <span><?php echo $messageNameLast; ?></span>
 
         <label for="email">Email:</label> <br>
@@ -78,11 +91,11 @@ if (isset($_POST['submitBtn'])) {
         <span><?php echo $messageEmail2; ?></span>
 
         <label for="password">Password:</label> <br>
-        <input type="password" name="password" placeholder="Password"> <br>
+        <input type="password" name="password" placeholder="Password">
         <span><?php echo $message_password; ?></span>
 
         <label for="password_confirm">Password confirm:</label> <br>
-        <input type="password" name="password_confirm" placeholder="Password confirm"> <br>
+        <input type="password" name="password_confirm" placeholder="Password confirm"> 
         <span><?php echo $message_password_confirm; ?></span>
 
         <input type="submit" value="Submit" name='submitBtn'>
@@ -98,12 +111,19 @@ if (isset($_POST['submitBtn'])) {
         border: 2px solid lightgray;
         border-radius: 5px;
     }
-
+a {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
     input,
-    label {
+    label, h2 {
         margin: 5px;
         padding: 5px;
 
+    }
+    h2 {
+        text-align: center;
     }
 
     span {
