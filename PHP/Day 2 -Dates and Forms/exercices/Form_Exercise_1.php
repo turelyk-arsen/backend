@@ -37,7 +37,7 @@ echo '<p style="color:red">not valid</p>';
 	// var_dump($_POST);
 	// echo '</pre>';
 
-	// $email = '';
+	$email = '';
 	if (isset($_GET['button'])) {
 		// $errors = false;
 		$email = $_GET['email'];

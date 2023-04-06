@@ -1,59 +1,31 @@
 <?php
 session_start();
 
-$servername = 'localhost';
-$user_mysql = 'root';
-$password_mysql = '1Root2Arsen!';
+require 'configure.php';
+
 $conn = mysqli_connect($servername, $user_mysql, $password_mysql);
 
-if (mysqli_connect_errno()) {
-    die ("You can not connect to the server. ".mysqli_connect_errno());
+if (mysqli_connect_errno())
+    die("You can not connect to the server. " . mysqli_connect_errno(). "\n");
 
-    // $query_db = "CREATE DATABASE mydatabase1";
-    // $query_table = "CREATE TABLE users (
-    //     id int NOT NULL AUTO_INCREMENT,
-    //     name VARCHAR(50),
-    //     email VARCHAR(100),
-    //     user_pass VARCHAR(100),
-    //     PRIMARY KEY(id)
-    // )";
+$query_db = "CREATE DATABASE $my_database";
+mysqli_query($conn, $query_db);
+// echo "Error creating database: " . mysqli_error($conn) . "\n";
 
-    // $result1 = mysqli_query($conn, $query_db);
-    // $result2 = mysqli_query($conn, $query_table);
+mysqli_select_db($conn, $my_database);
+// echo "Error selected database: " . mysqli_error($conn) . "\n";
 
-}
+$query_table = "CREATE TABLE users (
+        id INT NOT NULL AUTO_INCREMENT,
+        name VARCHAR(50) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        user_pass VARCHAR(100) NOT NULL,
+        PRIMARY KEY(id)
+    )";
+
+$result_create_table = mysqli_query($conn, $query_table);
 
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// Create a new database
-$sql = "CREATE DATABASE mydatabase";
-if (mysqli_query($conn, $sql)) {
-    echo "Database created successfully\n";
-} else {
-    echo "Error creating database: " . mysqli_error($conn) . "\n";
-}
-
-// Select the new database
-mysqli_select_db($conn, "mydatabase");
-
-// Create a new table for user data
-$sql = "CREATE TABLE users (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    other_column_name VARCHAR(255) NOT NULL
-)";
-if (mysqli_query($conn, $sql)) {
-    echo "Table created successfully\n";
-} else {
-    echo "Error creating table: " . mysqli_error($conn) . "\n";
-}
-
-// Close the MySQL connection
 mysqli_close($conn);
 
 ?>

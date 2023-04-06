@@ -35,7 +35,7 @@
         else if (8 > strlen($email) || strlen($email) > 50)
             $errors['email'] = 'The e-mail must be between 8 and 50 characters';
 
-            if (strlen($password) < 8)
+        if (strlen($password) < 8)
             $errors['password'] = 'Password must be at least 8 characters !';
         else if ($password != $pass_confirm)
             $errors['password'] = 'Password must match!';
@@ -82,9 +82,9 @@
     }
     ?>
 
-<h3>FORM</h3>
+    <h3>FORM</h3>
     <form method="POST">
-        <input type="text" name="firstname" placeholder="First name" value="<?php echo $firstName; ?>"> 
+        <input type="text" name="firstname" placeholder="First name" value="<?php echo $firstName; ?>">
         <?php if (isset($errors['firstName']))
             echo $errors['firstName'] ?><br>
 
@@ -92,11 +92,11 @@
         <?php if (isset($errors['lastName']))
             echo $errors['lastName'] ?><br>
 
-        <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>"> 
+        <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
         <?php if (isset($errors['email']))
             echo $errors['email'] ?><br>
 
-        <input type="password" name="password" placeholder="Password"> 
+        <input type="password" name="password" placeholder="Password">
         <?php if (isset($errors['password']))
             echo $errors['password'] ?><br>
 
