@@ -11,8 +11,8 @@ if (file_exists('message.txt')) {
 	$file_get = fopen('message.txt', 'r');
 	while (!feof($file_get)) {
 		$line = fgets($file_get);
-		echo "<p> $line </p>";
-		echo "<hr>";
+		echo "<p> $line </p> <hr>";
+		// echo "<hr>";
 	}
 
 	fclose($file_get);
