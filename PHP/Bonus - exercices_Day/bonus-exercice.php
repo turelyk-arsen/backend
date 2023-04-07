@@ -24,4 +24,3 @@ that allows them to edit the user's name, email, and password.
 7.When the delete button is clicked, the user should be deleted from the "users" table.
 
  */
-?>
