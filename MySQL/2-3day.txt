@@ -1,0 +1,201 @@
+QSL
+1. 
+SELECT * FROM TABLE
+SELECT * FROM TABLE WHERE ID=1
+SELECT * FROM TABLE WHERE PRICE=20
+SELECT * FROM TABLE WHERE NAME='ABCD' SORT PRICE ASC
+SELECT * FROM TABLE WHERE NAME='ABCD' SORT PRICE DSC
+
+2. INSERT INTO TABLE1 (PRICE, NAME) VALUES (18, 'ABCD')
+
+3. 
+UPDATE TABLE1 (NAME, PRICE) ...........
+UPDATE TABLE1 SET NAME = 'EFGH' WHERE ID=5
+UPDATE TABLE1 SET (NAME, PRICE) = ('EFGH', 51) WHERE ID=5
+UPDATE TABLE1 SET (NAME, PRICE) = ('EFGH', 51) WHERE YEAR='2014'
+
+4.
+DELETE FROM TABLE2 WHERE ID=12
+DELETE FROM TABLE2 WHERE PRICE=24
+
+EXERCISE
+
+1 TABLE AUTHORS
+1. ID              INT--- PRIMARY KEY
+2. NAME            VARCHAR(120)
+3. BIOGRAPHY       VARCHAR(1500)
+4. BIRTH_YEAR      YEAR
+5. GENDER          ENUM('MALE','FEMALE','OTHER')
+
+2 TABLE BOOKS
+1. ID                 INT--- PRIMARY KEY
+2. TITLE              VARCHAR(50)
+3. PRICE              INT
+4. PUBLICATION_DATE   DATE
+5. AUTHOR_ID          INT--- FOREIGN KEY  >---|
+
+1/CREATE SCHEMA Library
+2/CREATE TABLE authors (id int, fullname varchar(120),
+ biography varchar(1500), birth_year year, gender enum('Male', 'Female', 'Other'))
+3/CREATE TABLE books (id int, title varchar(50), price int, publication_date date, author_id int)
+
+INSERT INTO authors (fullname, biography, birth_year, gender) VALUES ('name 1', 'one bio', '1950', 'male')
+
+Part 1:
+SELECT * FROM books;
+SELECT title FROM books;
+SELECT title, publication_date FROM books;
+
+Part 2:
+SELECT title FROM books ORDER BY TITLE;
+SELECT fullname FROM authors ORDER BY fullname DESC;
+SELECT DISTINCT fullname FROM authors ORDER BY fullname DESC;
+
+Part 3:
+SELECT * FROM BOOKS WHERE PUBLICATION_DATE BETWEEN '2000-01-01' AND '2010-12-31'
+SELECT * FROM BOOKS WHERE PUBLICATION_DATE NOT BETWEEN  '2000-01-01' AND '2010-12-31'
+
+Part 4:
+INSERT INTO authors (fullname, biography, birth_year, gender) VALUES ('Tolkien', 'This is J.R.R. bio', '1992', 'Male')
+
+INSERT INTO BOOKS (title, price, publication_date, author_id) VALUES ('Lord of the ring', 24, '1954-07-29', 'Tolkiens author id') --- wrong
+
+WHERE TITLE LIKE 'Lord Of The Ring%' 
+'% the %'
+
+SELECT * FROM books WHERE author_id != 6
+ ---get all books from the author 'Tolkien' (you have to know the author id)
+get all the author's books that are not 'Tolkien'
+
+SELECT * from books ORDER by PUBLICATION_DATE DESC LIMIT 5
+
+UPDATE BOOKS SET PRICE = 30 WHERE AUTHOR_ID = 2
+UPDATE BOOKS SET PRICE = 30 WHERE PRICE = 25
+UPDATE BOOKS SET PRICE = PRICE + 10
+
+
+28.03.2023
+CREATE TABLE novels (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50),
+    price INT,
+    publication_date YEAR,
+    author_id INT
+)
+
+insert into novels (title,
+    price,
+    publication_date,
+    author_id) values ('first title', 50, '1950', '1') 
+
+
+select * from novels, books
+
+change the name of the FOREIGN key to avoid errors
+
+
+SELECT 
+    *
+FROM
+    novels,
+    books
+WHERE
+    novels.publication_date > 2018
+
+
+    alter table novels add (publication_date date) 
+
+SELECT 
+    *
+FROM
+    novels, books
+WHERE
+    novels.publication_date > '2018-01-01'
+
+
+CORRECT:
+SELECT 
+    *
+FROM
+    books
+WHERE
+    publication_date >= '2018-01-01' UNION SELECT 
+    *
+FROM novels WHERE
+    publication_date >= '2018-01-01' 
+
+
+SELECT 
+    fullname, title
+FROM
+    books
+        INNER JOIN
+    authors ON books.author_id = authors.id
+
+
+    SELECT 
+    author_id, fullname, title, price
+FROM
+    books
+        INNER JOIN
+    authors ON books.author_id = authors.id
+WHERE
+    authors.id >= 3 AND price > 20
+
+SELECT 
+    author_id, fullname, title
+FROM
+    books
+        INNER JOIN
+    authors ON books.author_id = authors.id
+ORDER BY title
+
+for each book, get all the information about it and the name of the author
+SELECT 
+    books.*, authors.fullname
+FROM
+    books
+        LEFT JOIN
+    authors ON books.author_id = authors.id
+
+
+
+server --- data import --- import ---- select from self-contained file --- create new DATABASE
+retrieve the category and the name of the song for each song, but we still want to see all the categories,
+even if the don't have one or more matching songs
+SELECT 
+    categories.type, songs.title
+FROM
+    categories
+        LEFT JOIN
+    songs ON songs.categ_id = categories.id
+
+SELECT 
+    type, title
+FROM
+    categories
+        LEFT JOIN
+    songs ON songs.categ_id = categories.id
+
+retrieve the name of the artist, the song name and the category for each song.
+SELECT 
+    artists.name, songs.title, categories.type
+FROM
+    artists
+        INNER JOIN
+    songs ON artists.id = songs.artist_id
+        INNER JOIN
+    categories ON categories.id = songs.categ_id
+
+retrieve the name of the artist, the song name and the category for each song,
+but we still want to see all the categories without matched songs. We also want to see
+the result in the alphabetical order of the song names.
+SELECT 
+    artists.name, songs.title, categories.type
+FROM
+    artists
+        INNER JOIN
+    songs ON artists.id = songs.artist_id
+        RIGHT JOIN
+    categories ON categories.id = songs.categ_id
+ORDER BY songs.title
