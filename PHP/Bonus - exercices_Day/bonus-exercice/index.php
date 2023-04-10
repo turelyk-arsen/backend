@@ -86,7 +86,9 @@
             <form action="edit.php" method="post">
                 <input type="submit" value="Edit" name="submitEdit">
             </form>
+            <a href="detail.php?id=<?= $user['id']; ?>"> Detail page</a>
         </ul>
+
     <?php endforeach; ?>
 
 

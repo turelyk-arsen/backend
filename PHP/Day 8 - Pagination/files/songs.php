@@ -9,7 +9,7 @@ if (isset($_GET['page']))
 $howManyPerPage = 2;
 $start = $howManyPerPage * ($nbPage - 1);
 
-$conn = mysqli_connect('localhost', 'root', '', 'spotify');
+$conn = mysqli_connect('localhost', 'root', '1Root2Arsen!', 'spotify');
 
 // Retrieve songs
 $query = "SELECT title, type
@@ -45,8 +45,6 @@ $next = $nbPage + 1;
 </head>
 
 <body>
-
-    <?php require_once 'nav.html'; ?>
 
     <h1>Songs List</h1>
 

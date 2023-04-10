@@ -247,6 +247,10 @@
         <a href="./artist-details.php?id=<?= $artist['id']; ?>">Detail page</a>
         <hr>
 
+        <p><?= substr($instrument['description'], 0, 30) . '...'; ?></p>
+        </div>
+        <a href="details_instrument.php?id=<?= $instrument['id'] ?>">Detail page</a>
+        
     <?php endforeach; ?>
 </body>
 

@@ -38,19 +38,18 @@ if (isset($_POST['changeBtn'])) {
         $query = "UPDATE users SET name = '$name', email = '$email', user_pass = '$hashPassword' 
         WHERE id = $_COOKIE[id]";
         $result = mysqli_query($conn, $query);
-        setcookie('name', $_COOKIE['name'], time() -10, '/');
+        setcookie('name', $_COOKIE['name'], time() - 10, '/');
         setcookie('name', $name, 0, '/');
 
         if ($result)
-        header('Location: index.php');
+            header('Location: index.php');
 
-    //     if ($result)
-    //     echo "<p style='color: green'>Successfully registered</p>";
-    // else
-    //     echo "<p style='color: red'>Problem registering</p>";
+        //     if ($result)
+        //     echo "<p style='color: green'>Successfully registered</p>";
+        // else
+        //     echo "<p style='color: red'>Problem registering</p>";
     }
     mysqli_close($conn);
-
 }
 
 if (isset($_POST['deleteBtn'])) {
@@ -61,45 +60,92 @@ if (isset($_POST['deleteBtn'])) {
 
     $query = "DELETE FROM users WHERE id = $_COOKIE[id]";
     $result = mysqli_query($conn, $query);
-    setcookie('id', $_COOKIE['id'], time() -10, '/');
-    setcookie('name', $_COOKIE['name'], time() -10, '/');
+    setcookie('id', $_COOKIE['id'], time() - 10, '/');
+    setcookie('name', $_COOKIE['name'], time() - 10, '/');
     header('Location: index.php');
     mysqli_close($conn);
 }
 
 if (isset($_POST['outBtn'])) {
-    setcookie('id', $_COOKIE['id'], time() -10, '/');
-    setcookie('name', $_COOKIE['name'], time() -10, '/');
+    setcookie('id', $_COOKIE['id'], time() - 10, '/');
+    setcookie('name', $_COOKIE['name'], time() - 10, '/');
     header('Location: index.php');
 }
+
+if (isset($_POST['uploadBtn'])) {
+    if ($_FILES['file']['error'] != UPLOAD_ERR_OK)
+        die('Error during upload');
+
+    // Limit the type of the file: only IMAGES
+    $extension = array_search(
+        $_FILES['file']['type'],
+        array(
+            '.jpg' => 'image/jpeg',
+            '.png' => 'image/png',
+            '.gif' => 'image/gif'
+        )
+    );
+
+    if (!$extension)
+        die('File must be an image!');
+    else {
+        $fileName = time();
+        $filePathe = "uploads/$fileName$extension";
+
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $filePathe)) {
+            echo 'File uploaded!';
+        }
+    }
+}
+
+
 
 ?>
 
 
 <h2>Change date your <?php echo $_COOKIE["name"]; ?></h2>
-    <form method="post">
+<form method="post" enctype="multipart/form-data">
 
-        <label for="name">Name</label>
-        <input type="text" name="name" placeholder=" Name" value="<?php echo $name; ?>"> <br>
-        <?php if (isset($errors['name']))
-            echo $errors['name'];
-        ?>
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder=" Name" value="<?php echo $name; ?>"> <br>
+    <?php if (isset($errors['name']))
+        echo $errors['name'];
+    ?>
 
 
-        <label for="email">Email</label>
-        <input type="text" name="email" placeholder="E-mail" value="<?php echo $email; ?>"> <br>
-        <?php if (isset($errors['email']))
-            echo $errors['email'];
-        ?>
+    <label for="email">Email</label>
+    <input type="text" name="email" placeholder="E-mail" value="<?php echo $email; ?>"> <br>
+    <?php if (isset($errors['email']))
+        echo $errors['email'];
+    ?>
 
-        <input type="password" name="password" placeholder="Password"> <br>
-        <?php if (isset($errors['password']))
-            echo $errors['password'];
-        ?>
-        <input type="password" name="cPassword" placeholder="Confirm Password"><br> <br>
+    <input type="password" name="password" placeholder="Password"> <br>
+    <?php if (isset($errors['password']))
+        echo $errors['password'];
+    ?>
+    <input type="password" name="cPassword" placeholder="Confirm Password"><br> <br>
 
-        <input type="submit" name="changeBtn" value="Change">
-        <input type="submit" name="deleteBtn" value="Delete">
-        <input type="submit" name="outBtn" value="Out">
+    <input type="submit" name="changeBtn" value="Change">
+    <input type="submit" name="deleteBtn" value="Delete">
+    <input type="submit" name="outBtn" value="Out">
+    <br> <br>
+    <input type="file" name="file">
+    <input type="submit" name="uploadBtn" value="Upload">
 
-    </form>
+</form>
+
+<?php
+$files = scandir(__DIR__ . '/uploads');
+// print_r($files) ;
+$links = [];
+foreach ($files as $fileName) {
+    if ($fileName === '.' || $fileName === '..') {
+        continue;
+    }
+    $links[] = 'http://localhost/backend/PHP/Bonus%20-%20exercices_Day/bonus-exercice/uploads/' . $fileName;
+}
+
+
+foreach ($links as $link) : ?>
+    <a href="<?= $link ?>"><img src="<?= $link ?>" height="280px"></a>
+<?php endforeach; ?>

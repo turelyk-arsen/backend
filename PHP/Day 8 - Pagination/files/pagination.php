@@ -1,6 +1,5 @@
 <?php
 
-<?php
 
 /*
     To use pagination, we will use GET method
