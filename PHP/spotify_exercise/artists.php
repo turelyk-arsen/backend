@@ -1,10 +1,9 @@
 <?php
 
 //$conn = mysqli_connect('localhost', 'root', '', 'spotify');
-$conn = mysqli_connect('127.0.0.1', 'root', 'rootroot', 'spotify');
+$conn = mysqli_connect('127.0.0.1', 'root', '1Root2Arsen!', 'spotify');
 
-$query = "SELECT id, name, poster
-FROM artists";
+$query = "SELECT id, name, gender FROM artists";
 $result = mysqli_query($conn, $query);
 $artists = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_close($conn);
@@ -35,7 +34,7 @@ mysqli_close($conn);
 
         <p>
             <strong>Poster : </strong>
-            <img src="./assets/img/<?= $artist['poster'].".jpg"; ?>" width="200px">
+            <img src="./assets/img/<?= $artist['name'].".jpg"; ?>" width="200px">
         </p>
 
         <a href="./artist-details.php?id=<?= $artist['id']; ?>">Detail page</a>

@@ -47,7 +47,7 @@ mysqli_close($conn);
         <?= $artist['birth_year']; ?>
     </p>
 
-    <img src="./assets/img/<?= $artist['poster'].".jpg"; ?>" width="200px">
+    <img src="./assets/img/<?= $artist['name'].".jpg"; ?>" width="200px">
     <hr>
 
     <p>

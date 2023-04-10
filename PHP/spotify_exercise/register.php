@@ -51,16 +51,18 @@
         if (!$errors) {
             $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $conn = mysqli_connect('localhost', 'root', '', 'spotify');
-            $query = "INSERT INTO users(first_name, last_name, email, password)
-            VALUES('$firstName', '$lastName', '$email', '$hashPassword')";
+            $conn = mysqli_connect('localhost', 'root', '1Root2Arsen!', 'spotify');
+            $query = "INSERT INTO users (first_name, last_name, email, password)
+            VALUES ('$firstName', '$lastName', '$email', '$hashPassword')";
             $result = mysqli_query($conn, $query);
-            mysqli_close($conn);
 
             if ($result)
                 echo "<p style='color: green'>Successfully registered</p>";
             else
                 echo "<p style='color: red'>Problem registering</p>";
+
+             mysqli_close($conn);
+
         }
     }
 
@@ -70,8 +72,8 @@
         <input type="text" name="first_name" placeholder="First name"><br>
         <input type="text" name="last_name" placeholder="Last name"><br>
         <input type="text" name="email" placeholder="Email"><br>
-        <input type="text" name="password" placeholder="Password"><br>
-        <input type="text" name="cPassword" placeholder="Confirm password"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="cPassword" placeholder="Confirm password"><br>
         <input type="submit" name="registerBtn" value="Register"><br>
     </form>
 </body>

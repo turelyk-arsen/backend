@@ -9,7 +9,7 @@ if (isset($_GET['page']))
 $howManyPerPage = 2;
 $start = $howManyPerPage * ($nbPage - 1);
 
-$conn = mysqli_connect('127.0.0.1', 'root', 'rootroot', 'spotify');
+$conn = mysqli_connect('127.0.0.1', 'root', '1Root2Arsen!', 'spotify');
 // $conn = mysqli_connect('127.0.0.1', 'root', 'rootroot', 'new_spotify');
 // Retrieve songs
 $query = "SELECT title, type
