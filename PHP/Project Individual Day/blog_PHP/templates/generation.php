@@ -20,6 +20,11 @@ function generation_head_menu ($mysqli) {
                         <a class="nav-link" href="./topic.php?id_topic='. $rowTopic["id"] .'">'. $rowTopic['name'].'</a>
                         </li>';
                     }
+
+                    if (isset($_COOKIE['user_name'])) 
+                    echo '<li class="nav-item text-success"> You are register user with name : '.$_COOKIE['user_name'].'</li>';
+
+                
                 ?>
             </ul>
         </nav>
@@ -29,21 +34,25 @@ function generation_head_menu ($mysqli) {
 
 function generation_posts_index ($mysqli) {
     $sql = "SELECT * FROM `articles`";
-    $res = $mysqli -> query($sql);
+    // $res = $mysqli -> query($sql);
+    $res = mysqli_query($mysqli, $sql);
+    // $res -> num_rows > 0
 
-    if ($res -> num_rows > 0) {
-        while ($resArticle = $res -> fetch_assoc()) {
+    if (mysqli_num_rows($res) > 0) {
+        // $resArticle = $res -> fetch_assoc()
+        while ($resArticle = mysqli_fetch_assoc($res)) {
             ?>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" ><a href="post.php?id_article=<?= $resArticle['id'] ?>"><?= $resArticle['title'] ?></a></h5>
-                    <p class="card-text"><?= mb_substr($resArticle['text'], 0, 158, 'UTF-8') ?></p>
+                    <h5 class="card-title" >
+                        <a href="post.php?id_article=<?= $resArticle['id'] ?>"><?= $resArticle['title'] ?></a></h5>
+                    <p class="card-text"><?= mb_substr($resArticle['text'], 0, 158, 'UTF-8').'...' ?></p>
                 </div>
             </div>
             <?php
         }
     } else {
-        echo "Нет статей";
+        echo "No articles";
     }
 }
 
@@ -63,7 +72,7 @@ function generation_posts_topic ($mysqli, $id_topic) {
             <?php
         }
     } else {
-        echo "В этом раздели статей нету";
+        echo "No articles";
     }
 }
 
@@ -75,7 +84,7 @@ function generation_post ($mysqli, $id_article) {
         $resPost = $res -> fetch_assoc()?>
         <h1><?= $resPost['title'] ?></h1>
         <p><?= $resPost['text'] ?></p>
-        <p>Дата публикации: <?= substr($resPost['date'], 0, 11) ?></p>
+        <p>Publication date: <?= substr($resPost['date'], 0, 11) ?></p>
         <?php
     }
 }
@@ -89,14 +98,14 @@ function generation_comment ($mysqli, $id_article) {
             ?> 
             <div class="comment">
                 <p><b><?= $resComment['comment']?></b></p>
-                <p>Оставлин: <?= substr($resComment['date'], 0, 11)  ?></p>
+                <p>Time: <?= substr($resComment['date'], 0, 11)  ?></p>
             </div>
             <hr>
             <?php
         }
     } else {
         ?>
-            <p>Комментариев нет</p>
+            <p>There are no comments</p>
         <?php
     }
 }

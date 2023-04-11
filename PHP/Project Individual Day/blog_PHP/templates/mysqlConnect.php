@@ -10,3 +10,6 @@ if ($mysqli -> connect_error) {
     printf("NOT connected: %s\n", $mysqli -> connect_error);
     exit();
 };
+
+if (isset($_COOKIE['user_name'])) 
+    $mysqli_log = $mysqli;
