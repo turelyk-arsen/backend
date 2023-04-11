@@ -44,7 +44,8 @@ if (isset($_REQUEST['doGo']) === true) {
     <div class="comments container">
         <hr>
         <form action="<?= $_SERVER["SCRIPT_NAME"] ?>">
-            <textarea name="comment" id="" style="width:800px; height:100px;" value="<?php  edit_comment($mysqli, $id_article) ?>"></textarea>
+            <textarea name="comment" id="" style="width:800px; height:100px;"  ></textarea>
+            <br>
             <input type="hidden" name="id_article" value="<?php echo $id_article ?>">
             <input name="doGo" type="submit" value="Send">
         </form>

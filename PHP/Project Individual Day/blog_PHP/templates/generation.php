@@ -93,6 +93,7 @@ function generation_post($mysqli, $id_article)
         <?php
     }
 }
+$id_comment = $_REQUEST["id_comment"];
 
 function generation_comment($mysqli, $id_article)
 {
@@ -101,14 +102,18 @@ function generation_comment($mysqli, $id_article)
 
     if ($resSQL->num_rows > 0) {
         while ($resComment = $resSQL->fetch_assoc()) {
-        ?>
+            $_REQUEST["id_comment"] = $resComment['id'];
+            $id_comment = $_REQUEST["id_comment"];
+
+        ?> 
             <div class="comment">
                 <p><b><?= $resComment['comment'] ?></b></p>
                 <p>Time: <?= substr($resComment['date'], 0, 11)  ?></p>
                 
                 <form method='post'>
-                    <input type="hidden" name="id_article" value="<?php echo $id_article ?>">
+                    <input type="hidden" name="id_comment" value="<?php echo $id_comment ?>">
                     <input type="submit" name="editBtn" value='Edit comment'>
+
                 </form>
             </div>
             <hr>
@@ -121,24 +126,22 @@ function generation_comment($mysqli, $id_article)
     }
 }
 
-function edit_comment($mysqli, $id_article) {
-    $sql = "SELECT * FROM `comments` WHERE `id_article` = $id_article";
+function edit_comment($mysqli, $id_comment) {
+    $sql = "SELECT * FROM `comments` WHERE `id` = $id_comment";
     $resSQL = $mysqli->query($sql);
     $resComment = $resSQL->fetch_assoc();
-
-    return $resComment['comment'];
-     
+    return $resComment['comment']; 
 }
 
 if (isset($_POST['editBtn'])) {
     if (isset($_COOKIE['user_name'])) {
-        edit_comment($mysqli, $_REQUEST["id_article"]);
+        edit_comment($mysqli, $_REQUEST["id_comment"]);
     } else {
         echo 'If you want to send your comments, you must LOGIN! ';
     }
 }
 
 
-
+// print_r($id_comment) ;
 
 ?>
