@@ -90,13 +90,13 @@
             // VALUES ('$firstName', '$lastName', '$email', '$hashPassword')";
             // $result = mysqli_query($conn, $query);
 
-            //             $query = "SELECT title, type
+            // $query = "SELECT title, type
             // FROM songs s
             // INNER JOIN categories c ON s.categ_id = c.id
             // ORDER BY release_date DESC
             // LIMIT 3";
-            //             $result = mysqli_query($conn, $query);
-            //             $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            // $result = mysqli_query($conn, $query);
+            // $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
             // $query = "SELECT id, name, gender FROM artists";
@@ -104,16 +104,16 @@
             // $artists = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
             // Check if user already exists
-            //             $query = "SELECT * FROM users WHERE email = '$email'";
-            //             $result = mysqli_query($conn, $query);
-            //             // If I have a result : mail already exists in the DB
-            //             if (mysqli_num_rows($result) > 0) {
-            //                 echo 'Email already in use.<br>';
-            //             } else {
-            //                 // Insert user in the DB
-            //                 $query = "INSERT INTO users(username, email, password)
+            //$query = "SELECT * FROM users WHERE email = '$email'";
+            //$result = mysqli_query($conn, $query);
+            //   If I have a result : mail already exists in the DB
+            //     if (mysqli_num_rows($result) > 0) {
+            //      echo 'Email already in use.<br>';
+            //  } else {
+            //      // Insert user in the DB
+            // $query = "INSERT INTO users(username, email, password)
             // VALUES('$username', '$email', '$password')";
-            //                 $result = mysqli_query($conn, $query);
+            // $result = mysqli_query($conn, $query);
 
 
             // Check if user already exists
@@ -134,11 +134,14 @@
             // }
 
             // =========================== session
-            // $_SESSION['email'] = $_POST['email'];
-            // echo '<a href="./account.php">Go to account page</a>';
             // session_start();
 
+            // if (!$errors) {
+            // $_SESSION['email'] = $_POST['email'];
+            // echo '<a href="./account.php">Go to account page</a>';
+
             // next page
+            // session_start();
             // if (isset($_SESSION['email'])) {
             //     echo 'Welcome user, email : ' . $_SESSION['email'];
             // } else {
@@ -150,18 +153,23 @@
             //     unset($_SESSION['email']);
             //     header("Location: login.php");
             //     exit();
+            // }========================================
+            //  if(isset($_SESSION['page_view'])) {
+            //     $_SESSION['page_view'] +=1;
+            // } else {
+            //     $_SESSION['page_view'] =1;
             // }
 
             // $query = "SELECT * FROM users";
             // $result = mysqli_query($conn, $query);
             // $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
             // foreach ($users as $key => $user) {
-            //     if ($user['email'] == $email && password_verify($password, $user['users_password'])) {
-            //         header('Location: main.php');
-            //         $_SESSION['firstname'] = $user['firstname'];
-            //     } else {
-            //         header('Location: register.php');
-            //     }
+            // if ($user['email'] == $email && password_verify($password, $user['users_password'])) {
+            //      header('Location: main.php');
+            //      $_SESSION['firstname'] = $user['firstname'];
+            //  } else {
+            //    header('Location: register.php');
+            //   }
             // }
 
 
@@ -255,3 +263,38 @@
 </body>
 
 </html>
+
+<?php
+// COUNT VISIT COOKIE
+// <form method="post">   
+// <input type="submit" name="resetBtn" value="Reset">
+// </form>
+
+// <?php
+
+// // Reset btn
+// if (isset($_POST['resetBtn'])) {
+// // Remove the cookie from the cookie file (permanent)
+// setcookie('count', 1, time() - 3600);
+
+// // Remove the cookie from the array
+// unset($_COOKIE['count']);
+// }
+
+// // Check if my cookie exists
+// if (isset($_COOKIE['count'])) {
+// // We have to do ++
+// $count = $_COOKIE['count'] + 1;
+// setcookie('count', $count, time() + 60);
+// echo 'Number of time visited : ' . $_COOKIE['count'] . '<br>';
+// echo 'Date of first visit : ' . $_COOKIE['first_visit'] . '<br>';
+// } else {
+// // Its the first time : initialize to 1
+// echo "First time visiting the page !<br>";
+// setcookie('count', 1, time() + 600);
+// setcookie('first_visit', date("d/m/Y H:i:s"), time() + 600);
+
+// // time() : give you the timestamp of NOW
+// // date() : date format FROM the timestamp of NOW
+// }
+?>
