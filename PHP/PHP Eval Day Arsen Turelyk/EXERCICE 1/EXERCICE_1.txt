@@ -1,0 +1,27 @@
+Given this database structure :
+
+**INSTRUMENTS**(id, name, type, price)
+
+**BANDS**(id, name, bio)
+
+**INSTRUMENTS_IN_BAND**(#band_id, #instrument_id)
+
+You need, in a separate TXT/SQL file, to write the query to:
+
+1. display all the instruments for band ‘Metallica’
+
+SELECT i.id, i.name, i.type, i.price
+FROM INSTRUMENTS i
+INNER JOIN INSTRUMENTS_IN_BAND ib ON i.id = ib.instrument_id
+INNER JOIN BANDS b ON ib.band_id = b.id
+WHERE b.name = 'Metallica';
+
+2. For each band, display the name of the band + number of instruments 
+used by that band.
+
+SELECT b.name, COUNT(*) AS number_instruments
+FROM BANDS b
+INNER JOIN INSTRUMENTS_IN_BAND ib ON b.id = ib.band_id
+GROUP BY b.id;
+
+Note: Only write only the SQL query, no need for the all PHP.
