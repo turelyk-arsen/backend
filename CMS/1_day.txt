@@ -1,0 +1,34 @@
+Content Management System
+
+Front-office = general web
+Back-office = admin
+
+Role:
+1. subscriber
+2. contributor - post and comment
+3. author - media
+4. editor - pages
+5. administrator
+
+1. Page STATIC no tag/cat
+2. Post DYNAMIC   tags
+
+dinant 
+alsece montagne des singes
+
+
+1/ in XAMPP start mySQL and change the number port 3306 in workbench when the port is the same (use mysql instalar)
+2/ download wordpress 
+3/ create in xampp/htdocs new folder wordpress
+4/ copy all data from wordpress.zip
+5/ localhost in browser and go to phpmyadmin / create the your DB
+6/ go http://localhost/wordpress/ create .....
+7/ add themes in wordpress/wp-content/themes
+8/ 
+
+
+
+
+
+
+
