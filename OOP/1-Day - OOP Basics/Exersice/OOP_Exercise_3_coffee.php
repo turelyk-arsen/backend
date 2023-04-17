@@ -1,5 +1,5 @@
 <?php
-
+require_once 'CoffeeCup.php';
 /*
 	Part 1 :
 
@@ -20,6 +20,14 @@
 	$myCoffee->temperature = 25;
 */
 
+$myCoffee = new CoffeeCup('Malongo', 30, 25, 100);
+// $myCoffee->quantity = 30;
+// $myCoffee->temperature = 25;
+
+print_r($myCoffee);
+echo '<br>';
+
+
 /*
 	Part 2 : 15min
 
@@ -32,6 +40,12 @@
 			$myCoffee->sip(3);
 
 */
+echo '<br>';
+
+$myCoffee->sip(3);
+echo '<br>';
+
+// print_r($myCoffee);
 
 /*
 	Part 3 : 5 min
@@ -55,6 +69,9 @@
 	This method should refill quantity of the Mug to it's full capacity.
 */
 
+$myCoffee->refill();
+print_r($myCoffee);
+echo '<br>';
 /* 
 	Part 5 : 20min
 	- Create two methods: reHeat() and coolDown().
@@ -62,7 +79,8 @@
 		Both of them will display the new temperature of the coffee.
 
 */
-
+$myCoffee->reHeat(50);
+$myCoffee->coolDown(30);
 /* 
 
 	Step 6 : 10min
@@ -83,12 +101,13 @@
 
 */
 
-require_once 'Solutions/CoffeeCup.php';
 
-$myCoffee = new CoffeeCup(20, 'Malongo', 65); // 20 cl, brand Malongo, 65 °C
 
-while ($myCoffee->getQuantity() > 0) { // While there is coffee in my cup
-	$quantityToSip = rand(1, 6);
-	$myCoffee->sip($quantityToSip);
-	$myCoffee->coolDown(1.5); // Cup loose 1.5 °C on each sip
-}
+// $myCoffee = new CoffeeCup(20, 'Malongo', 65);
+ // 20 cl, brand Malongo, 65 °C
+
+// while ($myCoffee->getQuantity() > 0) { // While there is coffee in my cup
+// 	$quantityToSip = rand(1, 6);
+// 	$myCoffee->sip($quantityToSip);
+// 	$myCoffee->coolDown(1.5); // Cup loose 1.5 °C on each sip
+// }
