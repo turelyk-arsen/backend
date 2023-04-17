@@ -86,3 +86,71 @@ $otherCar = new Car3('Red', 'Ferrari', 'f12');
 $otherCar->accelerate();
 echo '<br>';
 print_r($otherCar);
+
+echo '<br>';
+echo '<br>';
+
+// Edit property;
+$otherCar->color = 'Blue';
+//Display a property
+echo $otherCar->color . '<br>';
+
+echo '<pre>';
+var_dump($otherCar);
+echo '</pre>';
+
+echo $otherCar . '<br>';
+
+class Car4
+{
+    private $color;
+    public $brand;
+    public $model;
+
+    //Setter
+    public function setColor($c)
+    {
+        //update the color property
+        // I have only three allowed colors: red/green/blue
+        if ($c != 'red' && $c != 'green' && $c != 'blue') {
+            echo 'Choose a valid color (red/green/blue) <br>';
+        } else {
+            $this->color = $c;
+        }
+    }
+
+    // Getter
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    // Constructor
+    public function __construct($c, $b, $m)
+    {
+        $this->setColor($c);
+        $this->brand = $b;
+        $this->model = $m;
+    }
+}
+
+// Create an object
+$myCar = new Car4('Yellow', 'Bmw', 'm2');
+
+
+// $myCar->color = 'red';
+// This WON'T work : color property is private
+
+// This will work
+$myCar->setColor('red');
+
+
+// echo $myCar->color;
+// This WON'T work 
+
+// This will work
+echo $myCar->getColor();
+echo '<pre>';
+var_dump($myCar);
+echo '</pre>';
+
