@@ -1,0 +1,14 @@
+OOP stands for Object-Oriented Programming
+Class                Object
+
+Fruit -------------- banana = banana/yellow/eat_fruit
+name/color --it's properties
+
+function   --it's method
+eat_fruit{echo "crunch"}
+
+Main_class
+Child_class can have everything from Main_class and new properties
+
+Public              Private
+public color        setter (color -> "yellow") and getter ("yellow")
