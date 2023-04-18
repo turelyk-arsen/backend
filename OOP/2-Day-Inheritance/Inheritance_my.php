@@ -1,39 +1,27 @@
 <?php
 
-/*
-    INHERITANCE
-
-    Inheritance represents a relationship between classes in a form of parent/child relation.
-
-    Children will benefits from the parent (properties & methods).
-    A class can only inherit from ONE parent.
-    Different children can inherit from the same parent.
-    
-    The parent share properties/methods to the children when it's 'public'/'protected'.
-    The parent can keep things private by using 'private'.
-
-    Children can have their own properties/methods.
-
-*/
-
 class Vehicle
 {
     // Properties children can access
-    protected $manufacturer;
+    protected $manufactured;
     public $color;
 
     public function __construct($m, $c)
     {
-        $this->manufacturer = $m;
+        $this->manufactured = $m;
         $this->color = $c;
     }
 
     public function horn()
     {
-        echo 'Tuut tuut<br>';
+        echo 'Tuut tuut <br>';
+    }
+
+    public function getManufacturer()
+    {
+        return $this->manufactured;
     }
 }
-
 
 // Car inherits from Vehicle
 class Car extends Vehicle
@@ -48,7 +36,7 @@ class Car extends Vehicle
 
     public function slam_the_door()
     {
-        echo "Bam<br>";
+        echo "Bam <br>";
     }
 }
 
@@ -63,14 +51,19 @@ class Truck extends Vehicle
     }
 }
 
-
-$myVehicle = new Vehicle('Audi', 'Grey');
-$myCar = new Car('BMW', 'Blue', 5);
+$myVehicle = new Vehicle('Audi', 'grey');
+$myCar = new Car('BMW', 'blue', 5);
 $myCar->horn();
 $myCar->slam_the_door();
-// echo $myCar->manufacturer;
+echo $myVehicle->color;
+
+// echo $myCar->manufactured; PROTECTED to access you should make SETTER/GETTER
+// then we add new method getManufacturer()
+
+echo '<br>';
+echo $myCar->getManufacturer();
 
 $myTruck = new Truck('Volvo', 'White/Red', 25);
 echo '<pre>';
-var_dump($myCar);
+var_dump($myTruck);
 echo '</pre>';
