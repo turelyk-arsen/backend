@@ -2,7 +2,7 @@
 
 require_once "LivingBeing.php";
 
-abstract class Animal extends LivingBeing
+class Animal extends LivingBeing
 {
     public $nbLegs;
 
@@ -11,6 +11,4 @@ abstract class Animal extends LivingBeing
         parent::__construct($n, $c, $g);
         $this->nbLegs = $l;
     }
-
-    // abstract public function talk(); 
 }
