@@ -12,4 +12,6 @@ abstract class LivingBeing
         $this->color = $c;
         $this->gender = $g;
     }
+    abstract public function talk(); 
+
 }

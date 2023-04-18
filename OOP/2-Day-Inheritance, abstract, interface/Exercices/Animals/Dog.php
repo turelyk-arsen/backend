@@ -4,7 +4,7 @@ require_once "Animal.php";
 
 class Dog extends Animal
 {
-    public function bark()
+    public function talk()
     {
         echo "Woof !<br>";
     }
