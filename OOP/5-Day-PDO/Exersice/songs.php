@@ -15,9 +15,10 @@ $songs = $result->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($songs as $song) {
  echo $song['title'].'<br>';
- echo "<a href='song-details.php'>details</a>".'<br><br>';
- <a href="./song-details.php?id=<?= $song['id']; ?>">Detail page</a>
+//  echo "<a href='song-details.php'>details</a>".'<br><br>';
 
 }
 
 $pdo = null;
+?>
+ <!-- <a href="./song-details.php?id=<?= $song['id']; ?>">Detail page</a> -->
