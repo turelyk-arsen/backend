@@ -19,10 +19,21 @@ I am writing to express my interest in the Junior Web Developer position that ha
 
 My recent experience in web development has shaped my knowledge of writing code for website development. I have a solid understanding of programming languages like JS, PHP, SQL, and modern frameworks such as React and Laravel, which I am confident will help me contribute to the success of your company.
 
-I have had the opportunity to work on a number of web development projects, including developing a website using Bootstrap to teach the Luxembourgish language, prior to enrolling in the Full Stack Developer courses. During my studies, I gained practical experience in creating responsive websites using modern approaches, and I am confident that I can bring this experience to your company.
+I have had the opportunity to work on a number of web development projects, including developing a website using Bootstrap to teach the Luxembourgish language, prior to enrolling in the Full Stack Developer courses. During my studies, I gained practical experience in creating responsive websites using modern approaches, and I am confident that I can bring this experience to your company. All my code is available on git hub and some works are collected on my own site, you can visit the links indicated above.
 
 I am excited about the opportunity to work with your team and contribute to your company's continued success. Thank you for considering my application. I look forward to discussing this position further with you.
 
 Sincerely,
 
 ARSEN TURELYK
+
+
+I am writing to express my sincere interest in the Junior Web Developer position recently advertised by your Company. As a recent graduate of Full Stack Developer courses, I am excited to apply my acquired knowledge and expertise in this role.
+
+My web development experience has provided me with a comprehensive understanding of various programming languages, including JS, PHP, SQL, and modern frameworks such as React and Laravel. My technical proficiency, coupled with a strong understanding of current industry trends and best practices, will enable me to make meaningful contributions towards your company's objectives.
+
+In addition to my theoretical knowledge, I have gained valuable practical experience through various web development projects. I created a website using Bootstrap to teach the Luxembourgish language, which facilitated my understanding of website creation and optimization. During my Full Stack Developer courses, I gained practical experience in creating responsive websites using cutting-edge development tools, which will prove beneficial to your company's goals.
+
+I am confident that my skill set and passion for web development make me an ideal fit for this role. You can find my code on GitHub and a collection of my works on my personal website, which showcases my abilities and skill set.
+
+I am excited about the prospect of joining your team and contributing to your continued success. Thank you for considering my application. I look forward to discussing this position further with you.
