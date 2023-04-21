@@ -4,9 +4,10 @@ class Movie
 {
     public $id;
     public $title;
-    public $views;
+    // public $views;
+    public $length;
     public $director_id;
-    public $poster;
+    // public $poster;
 
     public function get_title()
     {
@@ -16,6 +17,6 @@ class Movie
     public function __toString()
     {
         return "Title : $this->title<br>
-        Views : $this->views<br>";
+        Length : $this->length<br>";
     }
 }
