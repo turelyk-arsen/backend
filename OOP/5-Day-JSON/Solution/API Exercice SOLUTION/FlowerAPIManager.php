@@ -12,7 +12,7 @@ class FlowerAPIManager
     public function findAll()
     {
         $pdo = $this->get_pdo();
-        $results = $pdo->query('SELECT * FROM flower');
+        $results = $pdo->query('SELECT * FROM flowers');
         $flowers = $results->fetchAll(PDO::FETCH_CLASS, 'Flower');
         $pdo = null;
 
@@ -22,12 +22,11 @@ class FlowerAPIManager
     public function find($id)
     {
         $pdo = $this->get_pdo();
-        $prep = $pdo->prepare('SELECT * FROM flower WHERE id = :id');
+        $prep = $pdo->prepare('SELECT * FROM flowers WHERE id = :id');
         $prep->bindValue(':id', $id);
         $prep->execute();
 
-        $prep->setFetchMode(PDO::FETCH_CLASS, 'Flower');
-        $flower = $prep->fetch();
+        $flower = $prep->fetch(PDO::FETCH_CLASS, 'Flower');
         $pdo = null;
 
         return json_encode($flower, JSON_PRETTY_PRINT);
@@ -36,27 +35,28 @@ class FlowerAPIManager
     public function findByName($name)
     {
         $pdo = $this->get_pdo();
-        $prep = $pdo->prepare('SELECT * FROM flower WHERE name = :name');
+        $prep = $pdo->prepare('SELECT * FROM flowers WHERE name LIKE :name');
         $prep->bindValue(':name', $name);
         $prep->execute();
 
-        $prep->setFetchMode(PDO::FETCH_CLASS, 'Flower');
-        $flower_name = $prep->fetch();
+        $flower = $prep->fetchAll(PDO::FETCH_CLASS, 'Flower');
         $pdo = null;
 
-        return json_encode($flower_name, JSON_PRETTY_PRINT);
+        return json_encode($flower, JSON_PRETTY_PRINT);
     }
+
 
     public function sortBy($column, $direction)
     {
         $pdo = $this->get_pdo();
-        $prep = $pdo->prepare("SELECT * FROM flower ORDER BY $column $direction");
+        $prep = $pdo->prepare("SELECT * 
+        FROM flowers
+        ORDER BY $column $direction");
         $prep->execute();
 
-        $prep->setFetchMode(PDO::FETCH_CLASS, 'Flower');
-        $flower_column = $prep->fetchAll();
+        $flower = $prep->fetchAll(PDO::FETCH_CLASS, 'Flower');
         $pdo = null;
 
-        return json_encode($flower_column, JSON_PRETTY_PRINT);
+        return json_encode($flower, JSON_PRETTY_PRINT);
     }
 }
