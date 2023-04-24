@@ -29,6 +29,9 @@ $movies = [$fightClub, $titanic];
 // 2. Convert it to JSON (serialization)
 $json = json_encode($movies, JSON_PRETTY_PRINT);
 
+// 3. Save the json in a file
+// file_put_contents('movie.json', $json);
+
 echo '<pre>';
 echo $json;
 echo '</pre>';
