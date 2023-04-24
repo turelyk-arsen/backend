@@ -1,4 +1,38 @@
 <?php
+
+/*
+OOP - Object Oriented Programming
+Until now, we were coding using procedural method.
+OOP is a method of programming organized around real-world object.
+In programming, an object have the same definition as an object of the real life.
+For example, a car have many characteristics :
+    - The name of the car
+    - The brand of the car
+    - Color of the car
+    ....
+In OOP, characteristics are called 'properties'.
+The object can also perform some actions.
+For example, a car can :
+    - speed / accelerate
+    - brake
+    - pull down the window
+In OOP, actions are called 'methods'.
+---------------
+-- A CLASS --
+A class is what defines an object.
+It's the blueprint / the mold.
+A class defines all the properties and methods of your object.
+A class is not an object !!!!
+SOME RULES / GOOD PRACTICE :
+    - Capital Letter for the first letter of each words : 
+        HelloWorld, Car, CoffeeMug
+    - No crazy symbol (including spaces) in the name of your class, please.
+    - One class can be declared only once (same with function)
+    - One class = one file
+    - The name of the file should be the name of the class
+*/
+
+
 // Define our class
 class Car
 {
@@ -51,6 +85,12 @@ echo '</pre>';
 
 echo $bmw->color;
 
+/*
+    - The constructor :
+    
+    It's a method that allows you to initialize properties when creating the object.
+*/
+
 class Car3
 {
     //declare properties
@@ -100,7 +140,16 @@ var_dump($otherCar);
 echo '</pre>';
 
 echo $otherCar . '<br>';
-
+/*
+    Scope :
+    Visibility of your properties & methods
+    'public' keyword means that the property/method will be accessible from anywhere (inside & outside the class)
+    'private' keyword means property/method can be accessible only inside the class
+    Encapsulation :
+    - Proect the state of an object. Access properties is done via methods. This makes the class flexible and easy to manage.
+    - The code of an object is easily editable without breaking the program.
+    - Encapsulation is done using private scope and setters/getters
+*/
 class Car4
 {
     private $color;
