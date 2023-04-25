@@ -1,0 +1,198 @@
+What is a class for an object?
+*
+1 бал
+A class is an object
+A class is an instance of the object
++++An object is an instance of the class
+There is no link between the two
+
+2
+What is the correct syntax:
+*
+1 бал
++++ $myObject = new Object();
+$myObject = Object();
+$myObject = Object('Red','This is a weird object');
+Інше:
+
+3
+What are the functions specific to a class called?
+*
+1 бал
++++Methods
+Internal functions
+Actions
+Інше:
+
+4
+How do you write the constructor of a class?
+*
+1 бал
++++__construct()
+construct()
+constructor()
+__constructor()
+Інше:
+
+5
+What does the keyword private mean?
+*
+1 бал
+The property or method is accessible from inside or outside the class
+The property or method is only accessible from outside the class
++++The property or method is accessible only from within the class
+Indicates that the property cannot be accessed at all
+Інше:
+
+6
+What is the correct syntax to access a static method/properties?
+*
+1 бал
+Class->myStaticMethod();
+Class.myStaticMethod();
++++ Class::myStaticMethod();
+Class['myStaticMethod'];
+Інше:
+
+7
+What is the particularity of the keyword 'this':
+*
+1 бал
+It refers to the class
++++ It refers to the object
+It does not matter
+
+8
+What is the particularity of the keyword "self":
+*
+1 бал
+It refers to the instance of the class
+It does not matter
++++It refers to the class
+
+9
+What does the keyword "protected" mean?
+*
+1 бал
+The property or method is accessible from inside or outside the class
+The property or method is only accessible from outside the class
++++The property or method is accessible only from within the class and from those who inherit it
+Indicates that the property cannot be accessed at all
+
+10
+What syntax should you use if you want class A to benefit from the code of class B?
+0 балів
+class A::B
+class A import B
++++ class A extends B
+class B extends A
+
+11
+What is the appropriate method for using prepared statements?
+0 балів
+PDOStatement::execute
+PDO::exec
++++PDO::prepare
+PDO::query
+
+12
+What is the particularity of an abstract class?
+0 балів
++++An abstract class cannot be instantiated
+Another class cannot inherit an abstract class
+Abstract class allows to share properties/methods
+
+13
+What is the name of the type of process in PHP that will directly load 
+the files we need into the code.
+*
+1 бал
+upload
+reload
+inheritance
++++autoload
+
+14
+An interface allows you to specify ...
+*
+1 бал
+the classname
++++ that a part of the code must be implemented by a class
+that a part of the code must use the reader method
+
+15
+The particularity of a static variable is that...
+*
+1 бал
+it doesn't move
+it is attached to a particular object, but not to a class
++++ it is not attached to a particular object, but to the class
+it can be reused easily
+
+16
+In JSON format, to represents an object, you use :
+*
+1 бал
++++{...} : Curly Brackets (
+[...] : Brackets
+(...) : Parentheses
+''....'': Quotes
+
+17
+What is an exception?
+*
+1 бал
++++ A unexpected result that can't be handled by the program itself
+A unexpected result that can be handled by the script
+For example, when you forgot a semicolon, or cause an infinite loop
+
+18
+What is serialization?
+*
+1 бал
+The process of converting a string to an object.
++++The process of converting an object into a string
+It's just a way to use the JSON for
+
+19
+What is the right syntax to create your own exception class?
+*
+1 бал
+class MyException
+class MyException Exception()
++++class MyException extends Exception
+class MyException = Exception
+
+20
+Interfaces cannot be extended
+*
+1 бал
++++True
+False
+
+21
+The self keyword refers to ...
+*
+1 бал
+the instance of the object
++++the class
+the namespace
+the author of the code
+
+22
+A particularity of the pseudovariable $this is that...
+*
+1 бал
+it is linked to the object
++++it is not accessible in methods defined as static
+it is accessible in any method
+it is linked to the namespace
+
+23
+A simple way to organize class files is to create a subfolder by ...
+*
+1 бал
+method names
++++ class names
+the name of the author of the code
+namespace
