@@ -1,7 +1,7 @@
 <?php
 
 namespace Flowers;
-// use JsonSerializable;   second methods
+
 class Flower implements \JsonSerializable
 {
     public $id;

@@ -1,7 +1,9 @@
 <?php
 
 namespace Flowers\Utilities;
+
 require_once 'Flower.php';
+
 use \PDO;
 
 class FlowerAPIManager
@@ -10,6 +12,7 @@ class FlowerAPIManager
     private function get_pdo()
     {
         return new PDO('mysql:host=localhost;dbname=flower_db', 'root', '');
+        // return new \PDO('mysql:host=localhost;dbname=flower_db', 'root', '');
     }
 
     public function findAll()
