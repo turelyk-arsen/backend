@@ -21,15 +21,15 @@ $users = User::getAll();
 
 <h2>A basic USERS table</h2>
     <table style="width:100%">
-        <?php foreach ($users as $key => $value) : ?>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-            </tr>
+            </tr>    
+             <?php foreach ($users as $key => $value) : ?>
             <tr>
-                <td><? User::getAll() ?></td>
-                <td><? echo $value['username'] ?></td>
+                <td><? echo $value->id; ?></td>
+                <td><? echo $value->username; ?></td>
                 <td><? echo $value['email'] ?></td>
             </tr>
         <?php endforeach; ?>

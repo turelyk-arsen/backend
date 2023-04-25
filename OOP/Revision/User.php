@@ -25,5 +25,6 @@ class User
         $result = $pdo->query('SELECT * FROM users');
         $users = $result->fetchAll(PDO::FETCH_CLASS, 'User');
         $pdo = null;
+        return $users;
     }
 }
