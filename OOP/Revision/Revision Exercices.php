@@ -33,21 +33,6 @@ the matching folder in your repository.
 (people on MacOS will have to change the permissions of the folder in order to open it)
 
 ---
-    <table style="width:100%">
-        <?php foreach ($users as $key => $value) : ?>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
-            <tr>
-                <td><? echo $value['id'] ?></td>
-                <td><? echo $value['username'] ?></td>
-                <td><? echo $value['email'] ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-
 
 Exercise 2:
 
