@@ -1,0 +1,7 @@
+## (exemple) Order to create : 
+1 index.php
+2 SongController.php
+3 SongModel.php
+4 SongsView.php
+5 SongDetailsView.php
+6 ErrorView.php

@@ -1,0 +1,85 @@
+MVC (Model-View-Controller) is a design pattern commonly used in web application development. 
+It separates an application's concerns into three main components:
+
+#Model: 
+    Represents the application's data and business logic. 
+It is responsible for retrieving and storing data, as well as processing and managing the data based 
+on the application's rules.
+
+#View: 
+    Represents the presentation layer of the application.
+It is responsible for displaying the data to the user in a user-friendly format. 
+The View receives the data from the Model and renders it on the screen.
+
+#Controller: 
+    Acts as an intermediary between the Model and the View. 
+It receives user input (e.g., clicks, form submissions) from the View, processes it, 
+and updates the Model as needed. The Controller then retrieves the updated data from the Model and 
+passes it to the View to be displayed.
+
+#Why is MVC used
+#What is the purpose 
+
+MVC (Model-View-Controller) is a popular design pattern for developing web applications. 
+Its main purpose is to separate concerns and promote modular, organized, and maintainable code.
+
+ Here are some reasons why MVC is used:
+
+#Separation of concerns: 
+    MVC divides an application into three main components: Model, View, and Controller. 
+This separation allows for better organization and easier management of code.
+
+#Modularity: 
+    By separating responsibilities, MVC promotes the creation of modular components 
+that can be developed, tested, and reused independently.
+
+#Maintainability: 
+    Separating concerns and creating modular components make it easier to maintain 
+and update the codebase. When a change is needed, it is usually isolated to one of the components, 
+minimizing the impact on the rest of the application.
+
+#Scalability: 
+    MVC architecture makes it easier to scale an application, as individual components 
+can be updated or replaced independently.
+
+#Collaboration: 
+    The separation of concerns allows developers with different skills 
+(e.g., backend developers focusing on the Model and Controller, frontend developers focusing on the View) 
+to work simultaneously on a project without interfering with each other's work.
+
+#Easier testing: 
+    Separating the components makes it easier to write unit tests and perform integration testing, 
+as each component can be tested in isolation.
+
+
+------------------------------------
+
+## Explanation of each files we are going to create and practice:
+
+#index.php:
+Acts as the front controller or main router for the application.
+Handles incoming requests and calls the appropriate controller based 
+on the request.
+
+#SongController.php:
+Contains two functions: display_songs() and display_song($id).
+display_songs() retrieves a list of all songs and displays them 
+using the SongsView.php view.
+display_song($id) retrieves the details of a specific song and displays
+ them using the SongDetailsView.php view or shows an error 
+ message using the ErrorView.php view if the song is not found.
+
+#SongModel.php:
+Contains two functions: find_all() and find($id).
+find_all() fetches all songs from the database.
+find($id) fetches a specific song from the database using the provided ID.
+
+#ErrorView.php:
+A simple HTML template used to display error messages.
+
+#SongDetailsView.php:
+A simple HTML template used to display the details of a specific song.
+
+SongsView.php:
+A simple HTML template used to display a list of all songs, 
+with links to their detail pages.
