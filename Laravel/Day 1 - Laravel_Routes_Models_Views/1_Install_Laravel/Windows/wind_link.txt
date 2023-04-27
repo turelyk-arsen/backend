@@ -1,0 +1,8 @@
+
+1)
+https://gist.github.com/bradtraversy/7485f928e3e8f08ee6bccbe0a681a821
+
+2)
+Once composer, xampp and vs code are installed > 
+    in the terminal go to project directory and run: 
+ Run > " php artisan serve " 
