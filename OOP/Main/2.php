@@ -58,3 +58,22 @@ class My_name extends Name {
 // 3 update the db 
 // 4 oop create db, getter, validate, put or take, change between different things
 // create a file, 
+
+abstract class Car {
+    public $name;
+    public function __costruct($name) {
+        $this->name = $name;
+    }
+    abstract public function intro();
+}
+
+class Audi extends Car {
+    public function intro () {
+        return "hi";
+    }
+    public static function welcome() {
+        echo 'asdf';
+    }
+}
+Audi::welcome();
+// $audi = new Audi('Audi');
