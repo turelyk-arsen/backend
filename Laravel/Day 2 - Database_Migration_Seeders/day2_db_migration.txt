@@ -1,0 +1,3 @@
+Day 2
+Amazing Docs for mysql : sheetcheat
+https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3
