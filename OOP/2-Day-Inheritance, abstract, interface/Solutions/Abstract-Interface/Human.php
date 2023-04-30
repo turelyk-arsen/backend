@@ -1,6 +1,7 @@
 <?php
 
 require_once "LivingBeing.php";
+require_once "IWorker.php";
 
 class Human extends LivingBeing implements IWorker
 {

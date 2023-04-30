@@ -92,7 +92,8 @@ class Robot {
 	}
 
 }
-// A human being is a magical creature that does not belong to the animal kingdom but is represented by a name, a hair color and a gender.
+// A human being is a magical creature that does not belong to the animal 
+//kingdom but is represented by a name, a hair color and a gender.
 
 // A robot is a mechanical creature that is defined by an identifier and a color.
 
