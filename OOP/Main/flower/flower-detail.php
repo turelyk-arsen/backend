@@ -1,6 +1,8 @@
 <?php
 
 require_once 'FlowerManager.php';
+use Flowers\Utilities\FlowerManager;
+
 $id = $_GET['id'];
 $flowerOne = new FlowerManager();
 $flower = $flowerOne->find($id);
