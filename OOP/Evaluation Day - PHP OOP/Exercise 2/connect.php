@@ -12,7 +12,7 @@ class Connect
     public function insertUser($user, $email, $password)
     {
         $pdo = new PDO("mysql:host=localhost;dbname=exercise2_db", 'root', '');
-        $query = $pdo->prepare('INSERT INTO users(username, password, email) VALUES (:username, :email, :password)');
+        $query = $pdo->prepare('INSERT INTO users(username, email, password) VALUES (:username, :email, :password)');
         $query->bindValue(':username', $user);
         $query->bindValue(':email', $email);
         $query->bindValue(':password', $password);

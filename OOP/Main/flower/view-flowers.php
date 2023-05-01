@@ -37,6 +37,7 @@ if (isset($_GET['column']) && isset($_GET['direction'])) {
 }
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +81,31 @@ if (isset($_GET['column']) && isset($_GET['direction'])) {
     </table>
     <hr>
     <hr>
+
+    <h4>Send flower in :</h4>
+    <div>
+        <?php
+        if (isset($_POST['submit'])) {
+            $result = $allFlowers->sendInDB();
+
+            if ($result === true) {
+                echo "<div style='color: green; font-size: 20px; background-color: lightgrey;'>New flower was successfully added.</div>";
+            }
+
+            if (!empty($result) && $result !== true) {
+                echo "<div style='color: red; font-size: 20px; background-color: yellow;'>" . implode('<br>', $result) . "</div>";
+            }
+        }
+        ?>
+    </div>
+    <form method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="Name"> <br>
+        <label for="price">Price</label>
+        <input type="text" name="price" placeholder="Price"><br>
+        <input type="submit" value="Send" name="submit">
+        <!-- <button type="submit">Send</button> -->
+    </form>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'SavingAccount.php';
 require_once 'BankAccount.php';
+require_once 'SavingAccount.php';
 require_once 'ProfessionalAccount.php';
 
 $simonAccount = new SavingAccount('Z98az908', 200, 0.012);

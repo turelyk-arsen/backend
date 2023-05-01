@@ -1,4 +1,5 @@
 <?php
+
 namespace Flowers\Utilities;
 
 require_once 'Flower.php';
@@ -74,9 +75,9 @@ class FlowerManager
     public function sortBy($order)
     {
         $pdo = $this->pdo();
-        $prep = $pdo->prepare('SELECT * FROM flowers ORDER BY'.$order);
+        $prep = $pdo->prepare('SELECT * FROM flowers ORDER BY' . $order);
         if ($prep->execute()) {
-          $flowers = $prep->fetchAll(PDO::FETCH_ASSOC);
+            $flowers = $prep->fetchAll(PDO::FETCH_ASSOC);
         }
         // $prep->setFetchMode(PDO::FETCH_CLASS, 'Flower');
         // $flower = $prep->fetch();
@@ -85,5 +86,40 @@ class FlowerManager
         return $flowers;
 
         // return json_encode($flower, JSON_PRETTY_PRINT);
+    }
+
+    public function sendInDB()
+    {
+        $pdo = $this->pdo();
+        $errors = array();
+
+        foreach ($_POST as $key => $value) {
+            $post[$key] = strip_tags(trim($value));
+        }
+        if (strlen($post['name']) < 3) {
+            $errors[] = 'Name must be at least 3 characters';
+        }
+        // if (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
+        //     $errors[] = 'Email is invalid';
+        if (empty($post['price'])) {
+            $errors[] = 'Price is mandatory';
+        } else if (!is_numeric($post['price'])) {
+            $errors[] = 'Price is a number';
+        }
+
+        if (count($errors) == 0) {
+            $addFlower = $pdo->prepare('INSERT INTO flowers (name, price) VALUES(:name, :price)');
+            $addFlower->bindValue(':price', $post['price']);
+            $addFlower->bindValue(':name', $post['name']);
+            // $insertUser->bindValue(':birthdate', date('Y-m-d', strtotime($post['birthdate'])));
+            if ($addFlower->execute()) {
+                return true;
+            } else {
+                $errors[] = 'SQL Error';
+                return $errors;
+            }
+        }
+        return $errors;
+
     }
 }
