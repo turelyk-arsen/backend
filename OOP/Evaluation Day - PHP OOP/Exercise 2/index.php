@@ -16,6 +16,12 @@ if (isset($_POST['submitBtn'])) {
         if (empty($name))
                 $errors['name'] = 'Name is mandatory !';
 
+        try {
+                $connection->checkName($_POST['username']);
+        } catch (\InvalidInputException $e) {
+                echo $e->getMessage();
+        }
+
         $email = trim($_POST['email']);
         $sanitizedEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
         if (empty($sanitizedEmail))
@@ -42,6 +48,17 @@ if (isset($_POST['submitBtn'])) {
                 $password = password_hash($password, PASSWORD_DEFAULT);
                 $connection->insertUser($name, $email, $password);
         }
+
+        // if (!empty($errors)) {
+        //         throw new InvalidInputException(implode("\n", $errors));
+        //     }
+
+
+        //     $password = password_hash($password, PASSWORD_DEFAULT);
+        //     $connection->insertUser($name, $email, $password);
+
+        //     echo "<div style='color: green; font-size: 20px; background-color: lightgrey;'>New user was successfully added.</div>";
+
 }
 
 ?>
@@ -49,17 +66,17 @@ if (isset($_POST['submitBtn'])) {
 <h1>Add a new user : </h1>
 
 <form method="post">
-        <input type="text" name="username" placeholder="Username"> 
+        <input type="text" name="username" placeholder="Username">
         <?php if (isset($errors['name']))
-            echo $errors['name'];
+                echo $errors['name'];
         ?><br>
         <input type="email" name="email" placeholder="Email">
         <?php if (isset($errors['email']))
-            echo $errors['email'];
+                echo $errors['email'];
         ?><br>
         <input type="password" name="pwd" placeholder="Password">
         <?php if (isset($errors['password']))
-            echo $errors['password'];
+                echo $errors['password'];
         ?><br>
         <input type="submit" value="Submit" name="submitBtn">
 </form>

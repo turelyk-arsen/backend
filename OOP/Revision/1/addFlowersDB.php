@@ -7,10 +7,12 @@
 
     if (empty($_POST['name'])) {
         $errors['name'] = 'Name of the flower is required';
+        echo  $errors['name'];
     }
 
     if (empty($_POST['price'])) {
         $errors['price'] = 'Price of the flower is required';
+        echo $errors['price'];
     }
 
     if (count($errors) == 0) {
