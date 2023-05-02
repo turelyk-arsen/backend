@@ -29,6 +29,30 @@ require_once 'displayFlowers.php';
             background-color: #333;
             color: #fff;
         }
+
+        /* input {
+            padding: 10px 20px;
+            border: 2px solid blue;
+            border-radius: 3px;
+            display: block;
+            margin: 10px;
+        }
+        select {
+            padding: 5px 5px;
+            border: 2px solid black;
+            border-radius: 3px;
+            display: block;
+            margin: 10px;
+        }
+        label {
+            font-size: 1.2rem;
+            margin: 10px;
+        }
+        div.form {
+            background-color: lightsteelblue;
+            width: 20%;
+            float: left;
+        } */
     </style>
     <script>
         function toggleColorInput() {
@@ -46,7 +70,7 @@ require_once 'displayFlowers.php';
 
 <body>
 
-
+<div class="form">
     <h2>Add flower</h2>
     <form method='post'>
         <label for="name">Title</label>
@@ -76,7 +100,7 @@ require_once 'displayFlowers.php';
 
         <input type="submit" name="submitBtn" value="Send">
     </form>
-
+    </div>
 
     <h2>All our flowers</h2>
     <table>

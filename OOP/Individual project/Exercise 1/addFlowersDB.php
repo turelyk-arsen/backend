@@ -2,9 +2,9 @@
 
 if (isset($_POST['submitBtn'])) {
     $errors = array();
-    $name = trim($_POST['name']);
+    $name =strip_tags(trim($_POST['name']));
     $price = trim($_POST['price']);
-    $color = trim($_POST['color']);
+    $color = strip_tags(trim($_POST['color']));
 
     if (empty($_POST['name'])) {
         $errors['name'] = 'Field title is empty';
@@ -14,9 +14,6 @@ if (isset($_POST['submitBtn'])) {
         $errors['price'] = 'Field title is empty and must be number!';
     }
 
-
-
-
     if (count($errors) == 0) {
         echo 'Form ok';
 
@@ -24,7 +21,6 @@ if (isset($_POST['submitBtn'])) {
             $choice = $_POST['type'];
 
             if ($choice == 'plant') {
-                // додати нову рослину
                 $pdo = new PDO('mysql:host=localhost;dbname=flowers', 'root', '');
                 $prep = $pdo->prepare("INSERT INTO plants (name, price) VALUES (?,?)");
                 $prep->bindParam(1, $name);
@@ -35,7 +31,6 @@ if (isset($_POST['submitBtn'])) {
                 if (empty($_POST['color'])) {
                     $errors['color'] = 'Color is empty';
                 } else {
-                    // додати новий квіток
                     $pdo = new PDO('mysql:host=localhost;dbname=flowers', 'root', '');
                     $prep = $pdo->prepare("INSERT INTO flowers (name, price, color) VALUES (?,?,?)");
                     $prep->bindParam(1, $name);
