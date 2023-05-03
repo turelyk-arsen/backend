@@ -26,12 +26,21 @@ class Connect
         }
     }
 
-    public function checkName ($name) {
+    public function checkName($name, $email, $password)
+    {
         $name = strip_tags(trim($_POST['username']));
         if (empty($name))
-               throw new InvalidInputException('Name is mandatory !!!');
+            throw new InvalidInputException('Name is mandatory !!!');
+
+        if (empty($email))
+            throw new InvalidInputException('Email is mandatory !!!');
+
+        if (empty($password))
+            throw new InvalidInputException('Password is mandatory !!!');
 
         return $name;
+        return $email;
+        return $password;
     }
 }
 
