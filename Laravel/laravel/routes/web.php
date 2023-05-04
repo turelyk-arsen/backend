@@ -36,9 +36,30 @@ Route::get('/', function () {
 });
 
 //single route
-Route::get('/listings/{id}', function ($id) {
+
+// FIRST
+// Route::get('/listings/{id}', function ($id) {
+//     return view('listing', [
+//         'listing' => Listing::find($id)
+//     ]);
+// });
+
+//SECOND
+// Route::get('/listings/{id}', function ($id) {
+//     $listing = Listing::find($id);
+//     if ($listing) {
+//         return view('listing', [
+//             'listing' => $listing
+//         ]);
+//     } else {
+//         abort('404');
+//     }
+// });
+
+// LAST without IF/ELSE 
+Route::get('/listings/{listing}', function (Listing $listing) {
     return view('listing', [
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
 

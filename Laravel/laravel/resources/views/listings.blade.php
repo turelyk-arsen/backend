@@ -4,8 +4,8 @@
 {{-- we want to wrapped this code in a section directive --}}
 @section('content')
     {{-- ('content') need to be the same as out yield('content') --}}
-@include('partials._hero')
-@include('partials._search')
+    @include('partials._hero')
+    @include('partials._search')
     {{-- <h2>Listings</h2>
 
 <h2>{{ $heading }} </h2> --}}
@@ -26,45 +26,14 @@
         @endif
 
         @foreach ($listings as $listing)
-            <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                <div class="flex">
-                    <img class="hidden w-48 mr-6 md:block" src="{{asset('images/no-image.png')}}" alt="" />
-                    {{-- lets use the asset() --}}
-                    <div>
-                        <h3 class="text-2xl">
-                            {{-- we are now adding data from DB --}}
-                            <a href="/listings/{{$listing->id}}">{{$listing->title}}</a>
-                        </h3>
-                        <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
-                        <ul class="flex">
-                            <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Laravel</a>
-                            </li>
-                            <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">API</a>
-                            </li>
-                            <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Backend</a>
-                            </li>
-                            <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Vue</a>
-                            </li>
-                        </ul>
-                        <div class="text-lg mt-4">
-                            <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <h2>
-                <a href="/listings/{{ $listing['id'] }}">{{ $listing['title'] }}</a>
-            </h2>
-            <p>{{ $listing['description'] }} </p> --}}
+            {{-- @include('component.listing-component') --}}
+
+            <x-listing-card :listing="$listing"/>
         @endforeach
 
     </div>
 @endsection
+{{-- <h2>
+                <a href="/listings/{{ $listing['id'] }}">{{ $listing['title'] }}</a>
+            </h2>
+            <p>{{ $listing['description'] }} </p> --}}
