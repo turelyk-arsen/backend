@@ -1,0 +1,11 @@
+привіт. Так мене цікавить робота у вашій компанії. Дякую що написали мені і дуже вибачаюся що не відповів швидше.
+У мене був іспит на курсах по php oop на фул стак розробника які проводить adem. я навчаюся на цих курсах до кінця 
+травня. Це 4 місячні курси де ми навчаємося весь день з 9 до 17 години. Ми не вивчали Java і вивчали Angular
+тільки один день. Ви розумієте що досвіду роботи у цій галузі у мене також нема. Всю інформацію про мене ви можете 
+подивитися у linkedin/contact-info/ (Portfolio, CV).
+я хочу навчатися і згоден вивчити ті необхідні мови програмування фреймворки та програми які вам необхідно
+ на даний час найкраще спілкуватися для мене через Linkedin chat Дякую
+
+"Hello! I am very interested in working for your company. Thank you for writing to me, and I apologize for not responding sooner. I study on a four-month course full-stack development offered by Adem, where we studied all day from 9 a.m. to 5 p.m. Although we did not cover Java, we learned a little Angular. As of now, I have no experience in this field, but I am willing and eager to learn the necessary programming languages, frameworks, and programs that your company requires. You can find all the necessary information about me, including my portfolio and CV, on my LinkedIn profile/contact info. Currently, the best way to communicate with me is via LinkedIn chat. Thank you!"
+
+ 
