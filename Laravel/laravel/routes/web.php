@@ -1,6 +1,8 @@
 <?php
 
 // use Illuminate\Http\Request;
+
+use App\Http\Controllers\ListingController;
 use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
@@ -16,24 +18,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 // this is my homepage
-Route::get('/', function () {
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-        // [
-        //     [
-        //         'id' => 1,
-        //         'title' => 'Listing One',
-        //         'description' => 'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem',
-        //     ],
-        //     [
-        //         'id' => 2,
-        //         'title' => 'Listing Two',
-        //         'description' => 'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Merol Merol',
-        //     ]
-        // ]
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']
+// function () {
+
+    // return view('listings', [
+    //     // 'heading' => 'Latest Listings',
+    //     'listings' => Listing::all()
+    //     // [
+    //     //     [
+    //     //         'id' => 1,
+    //     //         'title' => 'Listing One',
+    //     //         'description' => 'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem',
+    //     //     ],
+    //     //     [
+    //     //         'id' => 2,
+    //     //         'title' => 'Listing Two',
+    //     //         'description' => 'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Merol Merol',
+    //     //     ]
+    //     // ]
+    // ]);
+// }
+);
 
 //single route
 
@@ -57,11 +62,14 @@ Route::get('/', function () {
 // });
 
 // LAST without IF/ELSE 
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+Route::get('/listings/{listing}', [ListingController::class, 'show']
+
+// function (Listing $listing) {
+    // return view('listing', [
+    //     'listing' => $listing
+    // ]);
+// }
+);
 
 // // Create a new Route to a new 'url'
 // Route::get('/hello', function () {
@@ -92,3 +100,13 @@ Route::get('/listings/{listing}', function (Listing $listing) {
 // laravel blade snippets by winnie lin
 // php namespace resolver by mehdi hassan
 // php intelephense
+
+//Naming convention
+// Common Resource Routes:
+// index - show all listings
+// show - show single listings
+// create - show form to create new listing (will display the form)
+// store - Store new listing (when the form is submitted)
+// edit - show form to edit listing (show the edit form)
+// update - update listing (to actually update the listing)
+// destroy - delete listing
