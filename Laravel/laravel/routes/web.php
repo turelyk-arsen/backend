@@ -110,3 +110,4 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']
 // edit - show form to edit listing (show the edit form)
 // update - update listing (to actually update the listing)
 // destroy - delete listing
+
