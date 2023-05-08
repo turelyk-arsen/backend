@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Listing extends Model
 {
     use HasFactory;
+    
+    // we used the Model::unguard() in app> http>providers>AppServiceProvider.php
+    // instead of the protected fillable property in here 
+    // protected $fillable = ['title', 'company', 'email', 'location', 'website', 'tags', 'description'];
 
     // create our scopeFilter()
 
