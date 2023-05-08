@@ -38,4 +38,7 @@
                 <a href="/listings/{{ $listing['id'] }}">{{ $listing['title'] }}</a>
             </h2>
             <p>{{ $listing['description'] }} </p> --}}
+    <div class="mt-6 p-4">
+        {{$listings->links()}}
+    </div>
 </x-layout>
