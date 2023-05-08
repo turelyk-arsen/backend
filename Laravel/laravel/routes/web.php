@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// this is my homepage
+// this is my homepage  All Listings
 Route::get('/', [ListingController::class, 'index']
 // function () {
 
@@ -60,8 +60,13 @@ Route::get('/', [ListingController::class, 'index']
 //         abort('404');
 //     }
 // });
+// Show create
+Route::get('/listings/create', [ListingController::class, 'create']);
 
-// LAST without IF/ELSE 
+// Store listing data
+Route::post('/listings', [ListingController::class, 'store']);
+
+// LAST without IF/ELSE  single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']
 
 // function (Listing $listing) {

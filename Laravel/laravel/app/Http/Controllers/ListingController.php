@@ -32,4 +32,11 @@ class ListingController extends Controller
             'listing' => $listing
         ]);
     }
+    public function create()
+    {
+        return view('listings.create');
+    }
+    public function store() {
+        
+    }
 } // end of the class
