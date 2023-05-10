@@ -2,9 +2,10 @@
 
 // use Illuminate\Http\Request;
 
-use App\Http\Controllers\ListingController;
 use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // this is my homepage  All Listings
-Route::get('/', [ListingController::class, 'index']
-// function () {
+Route::get(
+    '/',
+    [ListingController::class, 'index']
+    // function () {
 
     // return view('listings', [
     //     // 'heading' => 'Latest Listings',
@@ -37,7 +40,7 @@ Route::get('/', [ListingController::class, 'index']
     //     //     ]
     //     // ]
     // ]);
-// }
+    // }
 );
 
 //single route
@@ -66,15 +69,7 @@ Route::get('/listings/create', [ListingController::class, 'create']);
 // Store listing data
 Route::post('/listings', [ListingController::class, 'store']);
 
-// LAST without IF/ELSE  single listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']
 
-// function (Listing $listing) {
-    // return view('listing', [
-    //     'listing' => $listing
-    // ]);
-// }
-);
 
 // // Create a new Route to a new 'url'
 // Route::get('/hello', function () {
@@ -121,3 +116,24 @@ Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 
 //update listing
 Route::put('/listings/{listing}', [ListingController::class, 'update']);
+
+//delete
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
+// LAST without IF/ELSE  single listing
+Route::get(
+    '/listings/{listing}',
+    [ListingController::class, 'show']
+
+    // function (Listing $listing) {
+    // return view('listing', [
+    //     'listing' => $listing
+    // ]);
+    // }
+);
+
+//show register/create form
+Route::get('/register', [UserController::class, 'create']);
+
+// create new user
+Route::post('/users', [UserController::class, 'store']);
