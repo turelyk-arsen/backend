@@ -116,3 +116,8 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']
 // update - update listing (to actually update the listing)
 // destroy - delete listing
 
+// show edit form
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
+//update listing
+Route::put('/listings/{listing}', [ListingController::class, 'update']);

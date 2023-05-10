@@ -55,13 +55,41 @@ class ListingController extends Controller
             'tags' => 'required',
             'description' => 'required'
         ]);
-        if($request->hasFile('logo')) {
-            $formFields['logo'] = $request->file('logo')->store('logos','public');
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
         // now, if one of those field failed, it will show an error
         // if good completed we will redirect it to the homepage
 
+
         Listing::create($formFields);
         return redirect('/')->with('message', 'Listing created successfully');
     }
+
+    //show edit form
+    public function edit(Listing $listing)
+    {
+        return view('listings.edit', ['listing' => $listing]);
+    }
+
+    // update listing data
+    public function update(Listing $listing, Request $request)
+    {
+        $formFields = $request->validate([
+            'title' => 'required',
+            'company' => 'required',
+            'location' => 'required',
+            'website' => 'required',
+            'email' => ['required', 'email'],
+            'tags' => 'required',
+            'description' => 'required'
+        ]);
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        $listing->update($formFields);
+        return back()->with('message', 'Listing updated successfully');
+    }
+
 } // end of the class
