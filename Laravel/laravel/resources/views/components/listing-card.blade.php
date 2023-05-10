@@ -1,7 +1,9 @@
 @props(['listing'])
 <x-card>
     <div class="flex">
-        <img class="hidden w-48 mr-6 md:block" src="{{ asset('images/no-image.png') }}" alt="" />
+        <img class="hidden w-48 mr-6 md:block"
+            src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}" alt="" />
+        {{-- src="{{ asset('images/no-image.png') }}" --}}
         {{-- lets use the asset() --}}
         <div>
             <h3 class="text-2xl">
@@ -12,7 +14,7 @@
             {{-- tagsCsv is out @props
                 : is to pass a variable inside our attribute --}}
             <x-listing-tags :tagsCsv="$listing->tags" />
-                
+
             <div class="text-lg mt-4">
                 <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
             </div>

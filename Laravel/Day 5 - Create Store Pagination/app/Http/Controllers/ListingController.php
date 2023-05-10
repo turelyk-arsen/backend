@@ -8,58 +8,47 @@ use Illuminate\Validation\Rule;
 
 class ListingController extends Controller
 {
-    // Get and Show all listings
+    //Get and Show all listings
     public function index()
     {
-        // request()
-        // 2 ways
-
-        //1 
-        // dd(request());
-        // dd(request()->tag);
-
-        // 2 
-        // dd(request('tag'));
-
         return view('listings.index', [
-            // 'listings' => Listing::latest()->filter(request(['tag']))->get(),
-            // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->get(),
-            // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4),
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->simplePaginate(4),
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))
+                ->paginate(4),
 
         ]);
     }
+    //Show single listing
     public function show(Listing $listing)
     {
         return view('listings.show', [
             'listing' => $listing
         ]);
     }
+    // Create Form View
     public function create()
     {
         return view('listings.create');
     }
+
+    //Store Listing Data
     public function store(Request $request)
     {
-        // dd($request->all());
-        // dd($request->file('logo));
+        //dd($request->all());
+
         $formFields = $request->validate([
             'title' => 'required',
-            // if you want to add more then one
+            //if you want to add more then one
             'company' => ['required', Rule::unique('listings', 'company')],
             //'listings' = our DB table that we are using
-            // follow by 'company' - the field we are using in the DB
+            // follow by 'company' - the field we are using in the DB 
             'location' => 'required',
             'website' => 'required',
             'email' => ['required', 'email'],
             'tags' => 'required',
             'description' => 'required'
         ]);
-        if($request->hasFile('logo')) {
-            $formFields['logo'] = $request->file('logo')->store('logos','public');
-        }
-        // now, if one of those field failed, it will show an error
-        // if good completed we will redirect it to the homepage
+        //now, if one of those field failed, it will show an error
+        // if good completed we will redirect it to the hompage
 
         Listing::create($formFields);
         return redirect('/')->with('message', 'Listing created successfully');

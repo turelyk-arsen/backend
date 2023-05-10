@@ -7,7 +7,7 @@
             </h2>
             <p class="mb-4">Post a gig to find a developer</p>
         </header>
-        <form method="POST" action="/listings">
+        <form method="POST" action="/listings" enctype="multipart/form-data">
             @csrf
             {{-- NEED to use if anytime you have a form --}}
             {{-- @csrf  - - - this prevent cross sites scripting attacks --}}
@@ -64,12 +64,16 @@
                 @enderror
             </div>
             {{--  Impost file feature --}}
-            {{-- <div class="mb-6">
+            <div class="mb-6">
                 <label for="logo" class="inline-block text-lg mb-2">
                     Company Logo
                 </label>
                 <input type="file" class="border border-gray-200 rounded p-2 w-full" name="logo" />
-            </div> --}}
+            </div>
+            @error('logo')
+                <p class='text-red-500 text-xs mt-1'>{{ $message }}</p>
+            @enderror
+
             <div class="mb-6">
                 <label for="description" class="inline-block text-lg mb-2">
                     Job Description
