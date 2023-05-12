@@ -1,0 +1,30 @@
+Basic Commands: PHP ARTISAN
+---------------------------
+List all available Artisan commands:
+php artisan list
+
+Create a new controller:
+php artisan make:controller ControllerName
+
+Migrations and Database
+Create a new migration:
+php artisan make:migration migration_name
+
+Run all pending migrations:
+php artisan migrate
+
+Rollback the last database migration:
+php artisan migrate:rollback
+
+Seed the database with records:
+php artisan db:seed
+
+Refresh : clear the table + --seed repopulate the table with new data
+php artisan migrate:refresh --seed
+
+Create a new seeder:
+php artisan make:seeder SeederName
+
+php artisan make:listener ListenerName
+
+php artisan storage:link
