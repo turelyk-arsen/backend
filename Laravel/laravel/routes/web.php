@@ -64,10 +64,10 @@ Route::get(
 //     }
 // });
 // Show create
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 // Store listing data
-Route::post('/listings', [ListingController::class, 'store']);
+Route::post('/listings', [ListingController::class, 'store'])->middleware('auth'); 
 
 
 
@@ -112,13 +112,13 @@ Route::post('/listings', [ListingController::class, 'store']);
 // destroy - delete listing
 
 // show edit form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 //update listing
-Route::put('/listings/{listing}', [ListingController::class, 'update']);
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
 
 //delete
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
 // LAST without IF/ELSE  single listing
 Route::get(
@@ -133,10 +133,15 @@ Route::get(
 );
 
 //show register/create form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // create new user
 Route::post('/users', [UserController::class, 'store']);
 
 // logout
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+//login 
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
