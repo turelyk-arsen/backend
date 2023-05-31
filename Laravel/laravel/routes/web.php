@@ -120,6 +120,8 @@ Route::put('/listings/{listing}', [ListingController::class, 'update'])->middlew
 //delete
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+
 // LAST without IF/ELSE  single listing
 Route::get(
     '/listings/{listing}',
